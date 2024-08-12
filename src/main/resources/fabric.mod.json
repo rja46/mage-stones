@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "mage_stones",
+  "version": "${version}",
+  "name": "Mage Stones",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/mage_stones/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "tech.samgosden.mage_stones.client.Mage_stonesClient"
+    ],
+    "main": [
+      "tech.samgosden.mage_stones.Mage_stones"
+    ]
+  },
+  "mixins": [
+    "mage_stones.mixins.json",
+    {
+      "config": "mage_stones.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
