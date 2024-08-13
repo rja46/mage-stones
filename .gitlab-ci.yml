@@ -39,7 +39,14 @@ run_server:
     - cd ..
     - gradle runServer -PrunDir=run &
     - sleep 60 # Adjust this based on how long it typically takes for your server to start
-    - tail -f run/server.log | grep -q "Done (" # Adjust this based on the actual log message
-
+    - >
+      while ! grep -q "Done (" run/server.log; do
+        if grep -q "Exception" run/server.log; then
+          echo "Server crashed!"
+          exit 1
+        fi
+        sleep 5
+      done
+      
 after_script:
   - echo "End CI"
