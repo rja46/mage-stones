@@ -1,4 +1,4 @@
-package tech.samgosden.magestones;
+package tech.samgosden.magestones.item;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;

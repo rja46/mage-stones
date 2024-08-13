@@ -1,4 +1,4 @@
-package tech.samgosden.magestones;
+package tech.samgosden.magestones.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
@@ -7,7 +7,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import tech.samgosden.magestones.items.ModItems;
 
 public final class MageStonesItemGroup {
     public static final ItemGroup MAGE_STONES = FabricItemGroup.builder()
