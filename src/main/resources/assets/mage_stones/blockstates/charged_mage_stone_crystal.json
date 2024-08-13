@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mage_stones:block/charged_mage_stone_crystal" }
+  }
+}

@@ -25,7 +25,7 @@ public class ModItems {
             "dull_mage_stone");
 
     public static final Item CHARGED_MAGE_STONE = register(
-            new Item(new FabricItemSettings().rarity(Rarity.EPIC)),
+            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC)),
             "charged_mage_stone");
 
 

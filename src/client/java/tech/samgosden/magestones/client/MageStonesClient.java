@@ -29,5 +29,7 @@ public class MageStonesClient implements ClientModInitializer {
                 player.sendMessage(disclaimer, false);
             }
         });
+
+        MageStonesCutout.registerCutouts();
     }
 }

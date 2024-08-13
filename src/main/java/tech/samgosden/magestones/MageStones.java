@@ -12,5 +12,6 @@ public class MageStones implements ModInitializer {
         System.out.println("[Mage_Stones] Initialized! This mod adds... nothing?");
         ModItems.initialize();
         MageStonesItemGroup.initialize();
+        MageStonesBlocks.initialize();
     }
 }
