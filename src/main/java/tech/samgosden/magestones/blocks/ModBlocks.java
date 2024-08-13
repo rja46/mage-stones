@@ -29,6 +29,10 @@ public class ModBlocks {
             "dull_mage_stone_crystal",
             false);
 
+    public  static final Block CHARGER_BLOCK = register(
+            new ChargerBlock(AbstractBlock.Settings.create()),
+            "charger_block",
+            true);
 
     public static void initialize(){
     }
