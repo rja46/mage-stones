@@ -7,20 +7,20 @@
   "authors": [],
   "contact": {},
   "license": "MIT",
-  "icon": "assets/mage_stones/icon.png",
+  "icon": "assets/magestones/icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "tech.samgosden.mage_stones.client.Mage_stonesClient"
+      "tech.samgosden.magestones.client.MageStonesClient"
     ],
     "main": [
-      "tech.samgosden.mage_stones.Mage_stones"
+      "tech.samgosden.magestones.MageStones"
     ]
   },
   "mixins": [
-    "mage_stones.mixins.json",
+    "magestones.mixins.json",
     {
-      "config": "mage_stones.client.mixins.json",
+      "config": "magestones.client.mixins.json",
       "environment": "client"
     }
   ],

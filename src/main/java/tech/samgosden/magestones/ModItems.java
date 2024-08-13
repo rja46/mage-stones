@@ -1,4 +1,4 @@
-package tech.samgosden.mage_stones;
+package tech.samgosden.magestones;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.Item;
@@ -6,10 +6,10 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class Mage_stonesItems {
+public class ModItems {
     public static Item register(Item item, String id) {
         // Create the identifier for the item.
-        Identifier itemID = new Identifier(Mage_stones.MOD_ID, id);
+        Identifier itemID = new Identifier(MageStones.MOD_ID, id);
 
         // Register the item.
         Item registeredItem = Registry.register(Registries.ITEM, itemID, item);
@@ -23,7 +23,6 @@ public class Mage_stonesItems {
             "dull_mage_stone");
 
     public static void initialize(){
-
     }
 }
 
