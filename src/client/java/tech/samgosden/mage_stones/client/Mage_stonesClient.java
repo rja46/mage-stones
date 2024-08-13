@@ -22,7 +22,7 @@ public class Mage_stonesClient implements ClientModInitializer {
             // Check if the player is not null to avoid NullPointerException
             if (player != null) {
                 // Create a text message for the in-development disclaimer
-                Text disclaimer = Text.literal("This mod is currently in development. Use with caution.");
+                Text disclaimer = Text.literal("Mage Stones is currently in development. Use with caution.");
 
                 // Send the disclaimer message to the player's chat
                 // The second parameter is set to false in order to prevent the message from being logged to the console
