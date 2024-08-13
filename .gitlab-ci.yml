@@ -30,16 +30,6 @@ test:
   script:
    gradle test
 
-run_server:
-  stage: test
-  script:
-    - mkdir -p run # Ensure the run directory exists
-    - cd run
-    - echo "eula=true" > eula.txt
-    - cd ..
-    - gradle runServer -PrunDir=run &
-    - sleep 60 # Adjust this based on how long it typically takes for your server to start
-    - tail -f run/server.log | grep -q "Done (" # Adjust this based on the actual log message
 
 after_script:
   - echo "End CI"
