@@ -1,13 +1,14 @@
 package tech.samgosden.magestones.util;
 
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.RecipeManager;
 import net.minecraft.registry.Registries;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.registry.tag.TagKey;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 import tech.samgosden.magestones.MageStones;
 
@@ -16,11 +17,13 @@ import java.util.Optional;
 import java.util.Set;
 
 public class ItemTagger {
-    public void tagIronRelatedItems(DynamicRegistryManager registryManager) {
+    RecipeManager recipeManager;
+    public void tagIronRelatedItems(MinecraftServer server, DynamicRegistryManager registryManager) {
         Set<Recipe<?>> visitedRecipes = new HashSet<>();
         Set<Item> ironRelatedItems = new HashSet<>();
+        recipeManager = server.getRecipeManager();
 
-        for (Recipe<?> recipe : MinecraftClient.getInstance().world.getRecipeManager().values()) {
+        for (Recipe<?> recipe : recipeManager.values()) {
             if (!visitedRecipes.contains(recipe)) {
                 traverseRecipe(recipe, visitedRecipes, ironRelatedItems, registryManager);
             }
@@ -53,7 +56,7 @@ public class ItemTagger {
         } else {
             Item outputItem = recipe.getOutput(registryManager).getItem();
             Identifier outputItemId = Registries.ITEM.getId(outputItem);
-            Optional<? extends Recipe<?>> subRecipeOptional = MinecraftClient.getInstance().world.getRecipeManager().get(outputItemId);
+            Optional<? extends Recipe<?>> subRecipeOptional = recipeManager.get(outputItemId);
             if (subRecipeOptional.isPresent() && !visitedRecipes.contains(subRecipeOptional.get())) {
                 traverseRecipe(subRecipeOptional.get(), visitedRecipes, ironRelatedItems, registryManager);
             }
