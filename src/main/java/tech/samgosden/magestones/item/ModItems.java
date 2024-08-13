@@ -7,6 +7,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import tech.samgosden.magestones.MageStones;
+import tech.samgosden.magestones.blocks.ModBlocks;
 
 public class ModItems {
 
@@ -22,11 +23,11 @@ public class ModItems {
     }
 
     public static final Item DULL_MAGE_STONE = register(
-            new Item(new FabricItemSettings()),
+            new MageCrystalItem(new FabricItemSettings(), ModBlocks.DULL_MAGE_STONE_CRYSTAL),
             "dull_mage_stone");
 
     public static final Item CHARGED_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC)),
+            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.CHARGED_MAGE_STONE_CRYSTAL),
             "charged_mage_stone");
 
 

@@ -9,5 +9,7 @@ import tech.samgosden.magestones.blocks.ModBlocks;
 @Environment(EnvType.CLIENT)
 public class MageStonesCutout {
     public static void registerCutouts(){
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHARGED_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());    }
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHARGED_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DULL_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
+    }
 }

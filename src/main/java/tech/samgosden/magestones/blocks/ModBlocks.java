@@ -25,6 +25,12 @@ public class ModBlocks {
             "charged_mage_stone_crystal",
             false);
 
+    public static final Block DULL_MAGE_STONE_CRYSTAL = register(
+            new AmethystBlock(AbstractBlock.Settings.create().nonOpaque()),
+            "dull_mage_stone_crystal",
+            false);
+
+
     public static void initialize(){
     }
 }

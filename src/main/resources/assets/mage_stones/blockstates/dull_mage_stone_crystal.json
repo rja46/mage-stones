@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "mage_stones:block/dull_mage_stone_crystal" }
+  }
+}
