@@ -13,6 +13,7 @@ public class MageStonesClient implements ClientModInitializer {
      */
     @Override
     public void onInitializeClient() {
+        MageStonesCutout.registerCutouts();
         // Register a listener for the JOIN event of the ClientPlayConnectionEvents
         ClientPlayConnectionEvents.JOIN.register((handler, sender, client) -> {
 
@@ -30,6 +31,5 @@ public class MageStonesClient implements ClientModInitializer {
             }
         });
 
-        MageStonesCutout.registerCutouts();
     }
 }

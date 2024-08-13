@@ -6,6 +6,7 @@ import net.minecraft.item.ItemUsageContext;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.blocks.ModBlocks;
 
 public class MageCrystalItem extends Item {
     public MageCrystalItem(Settings settings) {
@@ -16,7 +17,7 @@ public class MageCrystalItem extends Item {
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
         BlockPos pos = context.getBlockPos().offset(context.getSide());
-        BlockState blockState =  MageStonesBlocks.CHARGED_MAGE_STONE_CRYSTAL.getDefaultState();
+        BlockState blockState =  ModBlocks.CHARGED_MAGE_STONE_CRYSTAL.getDefaultState();
 
         if (world.isAir(pos)) {
             world.setBlockState(pos, blockState);
