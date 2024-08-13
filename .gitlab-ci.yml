@@ -30,7 +30,7 @@ test:
   script:
    - gradle test
 
-serverStart:
+server:
   stage: test
   script:
     - mkdir -p run # Ensure the run directory exists
