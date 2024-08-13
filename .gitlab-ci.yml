@@ -1,4 +1,4 @@
-image: gradle:jdk17-alpine
+cimage: gradle:jdk17-alpine
 
 stages:
   - build
@@ -20,10 +20,20 @@ build:
       - build/libs/*.jar
     expire_in: 1 week
 
-test:
+check:
   stage: test
   script:
     gradle check
+test:
+  stage: test
+  script:
+    gradle test
+serverStart:
+  stage: test
+  script:
+    - ./gradlew runServer &
+    - sleep 60 # Adjust this based on how long it typically takes for your server to start
+    - tail -f server.log | grep -q "Done (" # Adjust this based on the actual log message
 
 
 after_script:
