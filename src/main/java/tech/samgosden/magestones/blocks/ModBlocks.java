@@ -1,7 +1,6 @@
 package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.AmethystBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -21,12 +20,12 @@ public class ModBlocks {
     }
 
     public static final Block CHARGED_MAGE_STONE_CRYSTAL = register(
-            new AmethystBlock(AbstractBlock.Settings.create().nonOpaque()),
+            new MageCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
             "charged_mage_stone_crystal",
             false);
 
     public static final Block DULL_MAGE_STONE_CRYSTAL = register(
-            new AmethystBlock(AbstractBlock.Settings.create().nonOpaque()),
+            new MageCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
             "dull_mage_stone_crystal",
             false);
 
