@@ -30,7 +30,7 @@ public class ModBlocks {
             false);
 
     public  static final Block CHARGER_BLOCK = register(
-            new ChargerBlock(AbstractBlock.Settings.create()),
+            new ChargerBlock(AbstractBlock.Settings.create().nonOpaque()),
             "charger_block",
             true);
 

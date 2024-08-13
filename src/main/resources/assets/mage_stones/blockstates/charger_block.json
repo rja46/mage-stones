@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "mage_stones:block/charger_block"
+    },
+    "active=true": {
+      "model": "mage_stones:block/charger_block_on"
+    }
+  }
+}
