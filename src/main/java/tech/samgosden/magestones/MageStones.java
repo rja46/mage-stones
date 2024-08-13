@@ -19,10 +19,10 @@ public class MageStones implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("[Mage_Stones] Initialized! This mod adds... nothing?");
+        BlockEntites.initialize();
         ModItems.initialize();
         MageStonesItemGroup.initialize();
         ModBlocks.initialize();
-        BlockEntites.initialize();
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             ItemTagger itemTagger = new ItemTagger();
             itemTagger.tagIronRelatedItems(server, server.getRegistryManager());
