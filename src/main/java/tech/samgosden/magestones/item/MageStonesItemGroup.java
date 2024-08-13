@@ -17,6 +17,7 @@ public final class MageStonesItemGroup {
                 entries.add(ModItems.CHARGED_MAGE_STONE);
                 entries.add(ModItems.DULL_MAGE_STONE);
                 entries.add(ModItems.LIGHT_MAGE_STONE);
+                entries.add(ModItems.COLD_MAGE_STONE);
 
                 entries.add(ModBlocks.CHARGER_BLOCK);
             })).build();

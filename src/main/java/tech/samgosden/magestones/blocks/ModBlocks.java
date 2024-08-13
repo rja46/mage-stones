@@ -2,7 +2,6 @@ package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -33,6 +32,11 @@ public class ModBlocks {
     public static final Block LIGHT_MAGE_STONE_CRYSTAL = register(
             new LightCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque().luminance(state -> 15)),
             "light_mage_stone_crystal",
+            false);
+
+    public static final Block COLD_MAGE_STONE_CRYSTAL = register(
+            new ColdCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
+            "cold_mage_stone_crystal",
             false);
 
     public  static final Block CHARGER_BLOCK = register(

@@ -34,6 +34,10 @@ public class ModItems {
             new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.LIGHT_MAGE_STONE_CRYSTAL),
             "light_mage_stone");
 
+    public static final Item COLD_MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.COLD_MAGE_STONE_CRYSTAL),
+            "cold_mage_stone");
+
 
     public static void initialize(){
     }
