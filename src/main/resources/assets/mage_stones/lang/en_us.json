@@ -1,5 +1,7 @@
 {
   "item.mage_stones.dull_mage_stone": "Dull Mage Stone",
   "item.mage_stones.charged_mage_stone": "Charged Mage Stone",
-  "itemGroup.magestones.magestones": "Mage Stones"
+  "item.mage_stones.light_mage_stone": "Light Mage Stone",
+  "itemGroup.magestones.magestones": "Mage Stones",
+  "block.mage_stones.charger_block": "Charger"
 }

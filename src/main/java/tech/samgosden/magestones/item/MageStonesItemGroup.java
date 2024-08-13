@@ -7,6 +7,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import tech.samgosden.magestones.blocks.ModBlocks;
 
 public final class MageStonesItemGroup {
     public static final ItemGroup MAGE_STONES = FabricItemGroup.builder()
@@ -15,6 +16,9 @@ public final class MageStonesItemGroup {
             .entries(((displayContext, entries) -> {
                 entries.add(ModItems.CHARGED_MAGE_STONE);
                 entries.add(ModItems.DULL_MAGE_STONE);
+                entries.add(ModItems.LIGHT_MAGE_STONE);
+
+                entries.add(ModBlocks.CHARGER_BLOCK);
             })).build();
 
     public static void initialize() {

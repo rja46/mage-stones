@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mage_stones:block/light_mage_stone_crystal",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "mage_stones:block/light_mage_stone_crystal",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mage_stones:block/light_mage_stone_crystal",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mage_stones:block/light_mage_stone_crystal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "mage_stones:block/light_mage_stone_crystal"
+    },
+    "facing=west": {
+      "model": "mage_stones:block/light_mage_stone_crystal",
+      "x": 90,
+      "y": 270
+    }
+  }
+}
