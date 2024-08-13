@@ -30,6 +30,10 @@ public class ModItems {
             new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.CHARGED_MAGE_STONE_CRYSTAL),
             "charged_mage_stone");
 
+    public static final Item LIGHT_MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.LIGHT_MAGE_STONE_CRYSTAL),
+            "light_mage_stone");
+
 
     public static void initialize(){
     }
