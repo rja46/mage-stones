@@ -2,8 +2,11 @@ package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 public class ColdCrystalBlockEntity extends BlockEntity {
@@ -23,14 +26,11 @@ public class ColdCrystalBlockEntity extends BlockEntity {
             if (ticksLeft == 0) {
                 world.setBlockState(pos, state.with(ColdCrystalBlock.ISACTIVE, false));
             }
-            PlayerEntity[] players = world.getPlayers().toArray(new PlayerEntity[0]);
-            for (PlayerEntity player : players) {
-                if (player.getPos().x < pos.getX() + effectRadius && player.getPos().x > pos.getX() - effectRadius
-                && player.getPos().y < pos.getY() + effectRadius && player.getPos().y > pos.getY() - effectRadius
-                        && player.getPos().z < pos.getZ() + effectRadius && player.getPos().z > pos.getZ() - effectRadius) {
-                    player.kill();
+            LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() + effectRadius, pos.getY() +  effectRadius, pos.getZ() + effectRadius,
+                    pos.getX() - effectRadius, pos.getY() - effectRadius, pos.getZ() - effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
+            for (LivingEntity entity : entities) {
+                    entity.kill();
                 }
             }
         }
     }
-}
