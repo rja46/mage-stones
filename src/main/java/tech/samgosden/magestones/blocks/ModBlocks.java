@@ -21,7 +21,7 @@ public class ModBlocks {
 
     public static final Block MAGE_STONE_CRYSTAL = register(
             new MageCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
-            "charged_mage_stone_crystal",
+            "mage_stone_crystal",
             false);
 
 
