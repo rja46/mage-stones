@@ -6,6 +6,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.MageStones;
 
 public class ChargerBlock extends Block {
     boolean isPowered = false;
@@ -34,12 +35,13 @@ public class ChargerBlock extends Block {
         }
 
         if (world.isReceivingRedstonePower(pos) && !isPowered) {
-            isPowered = true;
-            // Trigger your event here
-//            if (world.getBlockState(pos.up()).getBlock() == ModBlocks.DULL_MAGE_STONE_CRYSTAL) {
-//                world.setBlockState(pos.up(), ModBlocks.CHARGED_MAGE_STONE_CRYSTAL.getDefaultState());
-//                isPowered = false;
-//            }
+          isPowered = true;
+          // Trigger your event here
+            if (world.getBlockState(pos.up()).isIn(MageStones.CHARGEABLE_CRYSTALS)) {
+                ((MageCrystalBlockEntity) world.getBlockEntity(pos.up())).resetTimeLeft();
+                world.setBlockState(pos.up(), world.getBlockState(pos.up()).with(MageCrystalBlock.ISACTIVE, true));
+                isPowered = false;
+            }
         }
         else {
 

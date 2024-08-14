@@ -43,7 +43,7 @@ public class MageCrystalBlockEntity extends BlockEntity {
         ticksLeft = nbt.getInt("TicksLeft");
     }
 
-    public void recharge(){
-        ticksLeft = 100;
+    public void resetTimeLeft(){
+        ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
     }
 }
