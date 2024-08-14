@@ -4,6 +4,7 @@
   "block.mage_stones.cold_mage_stone": "Cold Mage Stone",
   "block.mage_stones.force_mage_stone": "Force Mage Stone",
   "block.mage_stones.gravity_mage_stone": "Gravity Mage Stone",
+  "block.mage_stones.heat_mage_stone": "Gravity Mage Stone",
   "itemGroup.magestones.magestones": "Mage Stones",
   "block.mage_stones.charger_block": "Charger"
 }

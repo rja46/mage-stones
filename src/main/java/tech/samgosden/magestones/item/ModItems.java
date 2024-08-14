@@ -64,6 +64,14 @@ public class ModItems {
                     ModBlocks.GRAVITY_MAGE_STONE_CRYSTAL),
             "gravity_mage_stone");
 
+    public static final Item HEAT_MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.HEAT_MAGE_STONE_CRYSTAL),
+            "heat_mage_stone");
+
 
     public static void initialize(){
     }

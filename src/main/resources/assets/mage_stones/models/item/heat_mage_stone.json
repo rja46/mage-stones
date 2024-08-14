@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "mage_stones:item/heat_mage_stone"
+  }
+}

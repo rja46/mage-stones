@@ -45,6 +45,11 @@ public class ModBlocks {
             "gravity_mage_stone_crystal",
             false);
 
+    public static final Block HEAT_MAGE_STONE_CRYSTAL = register(
+            new HeatCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
+            "heat_mage_stone_crystal",
+            false);
+
     public  static final Block CHARGER_BLOCK = register(
             new ChargerBlock(AbstractBlock.Settings.create().nonOpaque()),
             "charger_block",
