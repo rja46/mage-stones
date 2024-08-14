@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mage_stones:block/force_mage_stone_crystal"
+  }
+}

@@ -39,6 +39,11 @@ public class ModBlocks {
             "cold_mage_stone_crystal",
             false);
 
+    public static final Block FORCE_MAGE_STONE_CRYSTAL = register(
+            new ForceCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
+            "force_mage_stone_crystal",
+            false);
+
     public  static final Block CHARGER_BLOCK = register(
             new ChargerBlock(AbstractBlock.Settings.create().nonOpaque()),
             "charger_block",

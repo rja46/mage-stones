@@ -19,6 +19,12 @@ public class BlockEntities {
                             ModBlocks.COLD_MAGE_STONE_CRYSTAL)
                     .build(null);
 
+    public static final BlockEntityType<ColdCrystalBlockEntity> FORCE_CRYSTAL_BLOCK_ENTITY
+            = BlockEntityType.Builder.create(
+                    ColdCrystalBlockEntity::new, // Corrected here
+                    ModBlocks.COLD_MAGE_STONE_CRYSTAL)
+            .build(null);
+
     public static void initialize() {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
@@ -28,6 +34,11 @@ public class BlockEntities {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MageStones.MOD_ID, "cold_crystal_block_entity"),COLD_CRYSTAL_BLOCK_ENTITY
+        );
+
+        Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MageStones.MOD_ID, "force_crystal_block_entity"),FORCE_CRYSTAL_BLOCK_ENTITY
         );
     }
 }
