@@ -15,11 +15,10 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class LightCrystalBlock extends MageCrystalBlock implements BlockEntityProvider {
-    public static final IntProperty TICKSLEFT = IntProperty.of("ticksleft", 0, 100);
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
     public LightCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(height, xzOffset, settings);
-        setDefaultState(this.stateManager.getDefaultState().with(TICKSLEFT, 100).with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE));
+        setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE));
     }
 
 
@@ -31,9 +30,7 @@ public class LightCrystalBlock extends MageCrystalBlock implements BlockEntityPr
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(TICKSLEFT);
-        builder.add(WATERLOGGED);
-        builder.add(FACING);
+        super.appendProperties(builder);
         builder.add(ISACTIVE);
     }
 

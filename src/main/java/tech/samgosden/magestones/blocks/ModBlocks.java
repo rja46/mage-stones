@@ -30,7 +30,7 @@ public class ModBlocks {
             false);
 
     public static final Block LIGHT_MAGE_STONE_CRYSTAL = register(
-            new LightCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque().luminance(state -> state.get(LightCrystalBlock.TICKSLEFT) > 0 ? 15:0)),
+            new LightCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque().luminance(state -> state.get(LightCrystalBlock.ISACTIVE) ? 15:0)),
             "light_mage_stone_crystal",
             false);
 
