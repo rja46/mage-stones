@@ -31,11 +31,9 @@ public class ItemTagger {
     public void tagIronRelatedItems(MinecraftServer server, DynamicRegistryManager registryManager) {
         Set<Recipe<?>> visitedRecipes = new HashSet<>();
         recipeManager = server.getRecipeManager();
-        //add iron ingots to ironRelatedItems
         ironRelatedItems.add(Registries.ITEM.get(new Identifier("minecraft", "iron_ingot")));
 
         for (Recipe<?> recipe : recipeManager.values()) {
-            MageStones.LOGGER.info(recipe.getId().toString());
             if (!visitedRecipes.contains(recipe)) {
                 traverseRecipe(recipe, visitedRecipes, registryManager);
             }
@@ -46,7 +44,6 @@ public class ItemTagger {
     }
 
     private void traverseRecipe(Recipe<?> recipe, Set<Recipe<?>> visitedRecipes, DynamicRegistryManager registryManager) {
-        MageStones.LOGGER.info(recipe.getId().toString());
         visitedRecipes.add(recipe);
         Item out = recipe.getOutput(registryManager).getItem();
         //if recently traversed is full remove the first item that was added
@@ -105,10 +102,9 @@ public class ItemTagger {
     }
 
     private void addItemsToTag(Set<Item> items) {
-        MageStones.LOGGER.info("Hello");
         //print the name of all the items
         for (Item item : items) {
-            MageStones.LOGGER.info(item.getName().toString());
+
         }
     }
 }
