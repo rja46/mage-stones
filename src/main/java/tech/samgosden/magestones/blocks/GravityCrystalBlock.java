@@ -8,6 +8,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import tech.samgosden.magestones.item.ModItems;
 
 public class GravityCrystalBlock extends MageCrystalBlock {
     public GravityCrystalBlock(int height, int xzOffset, Settings settings) {
@@ -18,7 +19,7 @@ public class GravityCrystalBlock extends MageCrystalBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new GravityCrystalBlockEntity(pos, state);
+        return new GravityCrystalBlockEntity(pos, state, ModItems.GRAVITY_MAGE_STONE);
     }
 
     @Override

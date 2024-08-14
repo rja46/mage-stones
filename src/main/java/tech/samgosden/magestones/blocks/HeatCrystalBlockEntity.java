@@ -5,6 +5,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
+import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.entry.RegistryEntryOwner;
@@ -22,8 +23,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
-    public HeatCrystalBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntities.HEAT_CRYSTAL_BLOCK_ENTITY, pos, state);
+    public HeatCrystalBlockEntity(BlockPos pos, BlockState state, Item drop) {
+        super(BlockEntities.HEAT_CRYSTAL_BLOCK_ENTITY, pos, state, drop);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, HeatCrystalBlockEntity blockEntity) {

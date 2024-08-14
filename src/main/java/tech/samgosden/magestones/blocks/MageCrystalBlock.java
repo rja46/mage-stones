@@ -6,6 +6,7 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
@@ -17,11 +18,9 @@ import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
+import tech.samgosden.magestones.item.ModItems;
 
 public class MageCrystalBlock extends Block implements Waterloggable, BlockEntityProvider {
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
@@ -57,6 +56,10 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
             default -> this.upShape;
         };
     }
+    @Override
+    public Item asItem(){
+        return ModItems.MAGE_STONE;
+    }
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
@@ -77,6 +80,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
                 ? Blocks.AIR.getDefaultState()
                 : super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
+
 
     @Nullable
     @Override
@@ -131,4 +135,5 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
     ) {
         return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
     }
+
 }

@@ -5,6 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.Item;
 import tech.samgosden.magestones.util.Util;
 
 import net.minecraft.util.math.BlockPos;
@@ -14,8 +15,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
-    public ColdCrystalBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, pos, state);
+    public ColdCrystalBlockEntity(BlockPos pos, BlockState state, Item drop) {
+        super(BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, pos, state, drop);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {

@@ -8,6 +8,7 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import tech.samgosden.magestones.item.ModItems;
 
 public class HeatCrystalBlock extends MageCrystalBlock {
     public HeatCrystalBlock(int height, int xzOffset, Settings settings) {
@@ -18,7 +19,7 @@ public class HeatCrystalBlock extends MageCrystalBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new HeatCrystalBlockEntity(pos, state);
+        return new HeatCrystalBlockEntity(pos, state, ModItems.HEAT_MAGE_STONE);
     }
 
     @Override
