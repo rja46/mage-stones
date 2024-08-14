@@ -11,7 +11,6 @@ import net.minecraft.nbt.NbtCompound;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class ColdCrystalBlockEntity extends BlockEntity {
@@ -26,30 +25,30 @@ public class ColdCrystalBlockEntity extends BlockEntity {
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
+                LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() + blockEntity.effectRadius, pos.getY() + blockEntity.effectRadius, pos.getZ() + blockEntity.effectRadius,
+                        pos.getX() - blockEntity.effectRadius, pos.getY() - blockEntity.effectRadius, pos.getZ() - blockEntity.effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
+                for (LivingEntity entity : entities) {
+                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
+                }
+
+
+                for (int x = -blockEntity.effectRadius; x <= blockEntity.effectRadius; x++) {
+                    for (int y = -blockEntity.effectRadius; y <= blockEntity.effectRadius; y++) {
+                        for (int z = -blockEntity.effectRadius; z <= blockEntity.effectRadius; z++) {
+                            BlockPos currentPos = pos.add(x, y, z);
+                            BlockState blockState = world.getBlockState(currentPos);
+                            if (blockState.isOf(Blocks.WATER)) {
+                                world.setBlockState(currentPos, Blocks.ICE.getDefaultState());
+                            }
+                        }
+                    }
+                }
                 blockEntity.ticksLeft -= 1;
             }
             if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(ColdCrystalBlock.ISACTIVE, false));
             }
-            LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() + blockEntity.effectRadius, pos.getY() + blockEntity.effectRadius, pos.getZ() + blockEntity.effectRadius,
-                    pos.getX() - blockEntity.effectRadius, pos.getY() - blockEntity.effectRadius, pos.getZ() - blockEntity.effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
-            for (LivingEntity entity : entities) {
-                Vec3d slowVector = new Vec3d(0, 0, 0); // Adjust the values as needed
-                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
-            }
 
-
-            for (int x = -blockEntity.effectRadius; x <= blockEntity.effectRadius; x++) {
-                for (int y = -blockEntity.effectRadius; y <= blockEntity.effectRadius; y++) {
-                    for (int z = -blockEntity.effectRadius; z <= blockEntity.effectRadius; z++) {
-                        BlockPos currentPos = pos.add(x, y, z);
-                        BlockState blockState = world.getBlockState(currentPos);
-                        if (blockState.isOf(Blocks.WATER)) {
-                            world.setBlockState(currentPos, Blocks.ICE.getDefaultState());
-                        }
-                    }
-                }
-            }
 
         }
     }

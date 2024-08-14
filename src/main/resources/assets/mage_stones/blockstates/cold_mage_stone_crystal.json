@@ -1,30 +1,28 @@
 {
   "variants": {
-    "facing=down": {
-      "model": "mage_stones:block/cold_mage_stone_crystal",
-      "x": 180
-    },
-    "facing=east": {
-      "model": "mage_stones:block/cold_mage_stone_crystal",
-      "x": 90,
-      "y": 90
-    },
-    "facing=north": {
-      "model": "mage_stones:block/cold_mage_stone_crystal",
-      "x": 90
-    },
-    "facing=south": {
-      "model": "mage_stones:block/cold_mage_stone_crystal",
-      "x": 90,
-      "y": 180
-    },
-    "facing=up": {
-      "model": "mage_stones:block/cold_mage_stone_crystal"
-    },
-    "facing=west": {
-      "model": "mage_stones:block/cold_mage_stone_crystal",
-      "x": 90,
-      "y": 270
-    }
+    "isactive=true,waterlogged=true,facing=down":{"model":"mage_stones:block/cold_mage_stone_crystal","x": 180},
+    "isactive=true,waterlogged=true,facing=east":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":90},
+    "isactive=true,waterlogged=true,facing=north":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90},
+    "isactive=true,waterlogged=true,facing=south":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":180},
+    "isactive=true,waterlogged=true,facing=up":{"model":"mage_stones:block/cold_mage_stone_crystal"},
+    "isactive=true,waterlogged=true,facing=west":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":270},
+    "isactive=true,waterlogged=false,facing=down":{"model":"mage_stones:block/cold_mage_stone_crystal","x": 180},
+    "isactive=true,waterlogged=false,facing=east":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":90},
+    "isactive=true,waterlogged=false,facing=north":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90},
+    "isactive=true,waterlogged=false,facing=south":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":180},
+    "isactive=true,waterlogged=false,facing=up":{"model":"mage_stones:block/cold_mage_stone_crystal"},
+    "isactive=true,waterlogged=false,facing=west":{"model":"mage_stones:block/cold_mage_stone_crystal","x":90,"y":270},
+    "isactive=false,waterlogged=true,facing=down":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x": 180},
+    "isactive=false,waterlogged=true,facing=east":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":90},
+    "isactive=false,waterlogged=true,facing=north":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90},
+    "isactive=false,waterlogged=true,facing=south":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":180},
+    "isactive=false,waterlogged=true,facing=up":{"model":"mage_stones:block/cold_mage_stone_crystal_off"},
+    "isactive=false,waterlogged=true,facing=west":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":270},
+    "isactive=false,waterlogged=false,facing=down":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x": 180},
+    "isactive=false,waterlogged=false,facing=east":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":90},
+    "isactive=false,waterlogged=false,facing=north":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90},
+    "isactive=false,waterlogged=false,facing=south":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":180},
+    "isactive=false,waterlogged=false,facing=up":{"model":"mage_stones:block/cold_mage_stone_crystal_off"},
+    "isactive=false,waterlogged=false,facing=west":{"model":"mage_stones:block/cold_mage_stone_crystal_off","x":90,"y":270}
   }
 }
