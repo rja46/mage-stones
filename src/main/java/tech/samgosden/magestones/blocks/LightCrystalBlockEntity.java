@@ -2,8 +2,6 @@ package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.state.State;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
