@@ -10,7 +10,6 @@ public class LightCrystalBlockEntity extends BlockEntity {
     public LightCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntites.LIGHT_CRYSTAL_BLOCK_ENTITY, pos, state);
         ticksLeft = 100;
-        System.out.println("LightCrystalBlockEntity");
     }
 
 
