@@ -2,15 +2,15 @@ package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.item.ModItems;
 import tech.samgosden.magestones.util.Util;
 
 public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
-    public ForceCrystalBlockEntity(BlockPos pos, BlockState state, Item drop) {
-        super(BlockEntities.FORCE_CRYSTAL_BLOCK_ENTITY, pos, state, drop);
+    public ForceCrystalBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockEntities.FORCE_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.FORCE_MAGE_STONE);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ForceCrystalBlockEntity blockEntity) {

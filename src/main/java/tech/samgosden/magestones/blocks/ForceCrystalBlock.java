@@ -8,7 +8,6 @@ import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import tech.samgosden.magestones.item.ModItems;
 
 public class ForceCrystalBlock extends MageCrystalBlock {
     public ForceCrystalBlock(int height, int xzOffset, Settings settings) {
@@ -23,7 +22,7 @@ public class ForceCrystalBlock extends MageCrystalBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ForceCrystalBlockEntity(pos, state, ModItems.FORCE_MAGE_STONE);
+        return new ForceCrystalBlockEntity(pos, state);
     }
 
     @Nullable

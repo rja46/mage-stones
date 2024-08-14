@@ -24,7 +24,7 @@ public class LightCrystalBlock extends MageCrystalBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new LightCrystalBlockEntity(pos, state, asItem());
+        return new LightCrystalBlockEntity(pos, state);
     }
 
     @Override

@@ -13,6 +13,7 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.item.ModItems;
 import tech.samgosden.magestones.util.Util;
 
 import java.rmi.registry.Registry;
@@ -23,8 +24,8 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
-    public HeatCrystalBlockEntity(BlockPos pos, BlockState state, Item drop) {
-        super(BlockEntities.HEAT_CRYSTAL_BLOCK_ENTITY, pos, state, drop);
+    public HeatCrystalBlockEntity(BlockPos pos, BlockState state) {
+        super(BlockEntities.HEAT_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.HEAT_MAGE_STONE);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, HeatCrystalBlockEntity blockEntity) {
