@@ -42,4 +42,8 @@ public class MageCrystalBlockEntity extends BlockEntity {
         effectRadius = nbt.getInt("EffectRadius");
         ticksLeft = nbt.getInt("TicksLeft");
     }
+
+    public void recharge(){
+        ticksLeft = 100;
+    }
 }

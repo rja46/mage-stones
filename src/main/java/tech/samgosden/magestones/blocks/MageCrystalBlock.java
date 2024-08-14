@@ -24,6 +24,7 @@ import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class MageCrystalBlock extends Block implements Waterloggable, BlockEntityProvider {
+    public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.FACING;
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
