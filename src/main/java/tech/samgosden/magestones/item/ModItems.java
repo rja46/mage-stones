@@ -56,6 +56,14 @@ public class ModItems {
                     ModBlocks.FORCE_MAGE_STONE_CRYSTAL),
             "force_mage_stone");
 
+    public static final Item GRAVITY_MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.GRAVITY_MAGE_STONE_CRYSTAL),
+            "gravity_mage_stone");
+
 
     public static void initialize(){
     }
