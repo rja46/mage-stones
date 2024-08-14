@@ -1,8 +1,10 @@
 package tech.samgosden.magestones.client;
 
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 public class MageStonesClient implements ClientModInitializer {

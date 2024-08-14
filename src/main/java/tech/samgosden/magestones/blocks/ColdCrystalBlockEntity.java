@@ -4,10 +4,14 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.nbt.NbtCompound;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class ColdCrystalBlockEntity extends BlockEntity {
@@ -30,7 +34,8 @@ public class ColdCrystalBlockEntity extends BlockEntity {
             LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(pos.getX() + blockEntity.effectRadius, pos.getY() + blockEntity.effectRadius, pos.getZ() + blockEntity.effectRadius,
                     pos.getX() - blockEntity.effectRadius, pos.getY() - blockEntity.effectRadius, pos.getZ() - blockEntity.effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
             for (LivingEntity entity : entities) {
-                entity.kill();
+                Vec3d slowVector = new Vec3d(0, 0, 0); // Adjust the values as needed
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS))
             }
         }
     }
