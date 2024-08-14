@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class LightCrystalBlock extends MageCrystalBlock {
-    public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
+
     public LightCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(height, xzOffset, settings);
         setDefaultState(this.stateManager.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE));

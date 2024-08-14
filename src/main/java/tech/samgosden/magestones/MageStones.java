@@ -2,6 +2,10 @@ package tech.samgosden.magestones;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
+import net.minecraft.block.Block;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.util.Identifier;
 import tech.samgosden.magestones.blocks.BlockEntities;
 import tech.samgosden.magestones.blocks.ModBlocks;
 import tech.samgosden.magestones.item.MageStonesItemGroup;
@@ -14,6 +18,7 @@ public class MageStones implements ModInitializer {
     public static String MOD_ID = "mage_stones";
     public static String MOD_NAME = "Mage Stones";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
+    public static final TagKey<Block> CHARGEABLE_CRYSTALS = TagKey.of(RegistryKeys.BLOCK, new Identifier("mage_stones", "chargeable_crystals"));
 
 
     @Override
