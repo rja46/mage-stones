@@ -35,7 +35,7 @@ public class ColdCrystalBlockEntity extends BlockEntity {
                     pos.getX() - blockEntity.effectRadius, pos.getY() - blockEntity.effectRadius, pos.getZ() - blockEntity.effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
             for (LivingEntity entity : entities) {
                 Vec3d slowVector = new Vec3d(0, 0, 0); // Adjust the values as needed
-                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS))
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1));
             }
         }
     }
