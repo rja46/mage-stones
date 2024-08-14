@@ -8,11 +8,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class MageCrystalBlockEntity extends BlockEntity {
-    protected static int ticksLeft;
+    protected int ticksLeft;
     protected int effectRadius = 5;
 
     public MageCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        ticksLeft = 100;
     }
 
 

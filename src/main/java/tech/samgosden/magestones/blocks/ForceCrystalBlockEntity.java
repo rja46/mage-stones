@@ -16,7 +16,7 @@ public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
 
     public static void tick(World world, BlockPos pos, BlockState state, ForceCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
-            if (ticksLeft > 0) {
+            if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
                 LivingEntity[] entities = util.getEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
@@ -24,12 +24,9 @@ public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
                         entity.addVelocity(pushDirection.x, pushDirection.y, pushDirection.z);
                         entity.velocityModified = true;
                 }
-
-
-                ticksLeft -= 1;
-
+                blockEntity.ticksLeft -= 1;
             }
-            if (ticksLeft == 0) {
+            if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(ForceCrystalBlock.ISACTIVE, false));
             }
         }

@@ -21,7 +21,7 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
 
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
-            if (ticksLeft > 0) {
+            if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
                 int radiusSquared = radius*radius;
                 LivingEntity[] entities = util.getEntitiesInRange(radius, world, pos);
@@ -45,9 +45,9 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
                     }
                 }
                 waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
-                ticksLeft -= 1;
+                blockEntity.ticksLeft -= 1;
             }
-            if (ticksLeft == 0) {
+            if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(ColdCrystalBlock.ISACTIVE, false));
             }
         }
