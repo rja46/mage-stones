@@ -13,8 +13,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ColdCrystalBlockEntity extends BlockEntity {
     private int ticksLeft;
@@ -36,12 +36,11 @@ public class ColdCrystalBlockEntity extends BlockEntity {
                         .stream()
                         .filter(entity -> entity.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) <= radiusSquared)
                         .toArray(LivingEntity[]::new);
-
                 for (LivingEntity entity : entities) {
                     entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
                 }
-                List<BlockPos> positionsToUpdate = new ArrayList<>();
 
+                Set<BlockPos> waterPositions = new HashSet<>();
 
                 for (int x = -radius; x <= radius; x++) {
                     for (int y = -radius; y <= radius; y++) {
@@ -50,20 +49,18 @@ public class ColdCrystalBlockEntity extends BlockEntity {
                                 BlockPos currentPos = pos.add(x, y, z);
                                 BlockState blockState = world.getBlockState(currentPos);
                                 if (blockState.isOf(Blocks.WATER)) {
-                                    positionsToUpdate.add(currentPos);
+                                    waterPositions.add(currentPos);
                                 }
                             }
                         }
                     }
                 }
-                positionsToUpdate.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
+                waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
                 blockEntity.ticksLeft -= 1;
             }
             if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(ColdCrystalBlock.ISACTIVE, false));
             }
-
-
         }
     }
 

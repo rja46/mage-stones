@@ -12,7 +12,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class ForceCrystalBlock extends MageCrystalBlock implements BlockEntityProvider {
+public class ForceCrystalBlock extends MageCrystalBlock {
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
     public ForceCrystalBlock(int height, int xzOffset, Settings settings) {
         super(height, xzOffset, settings);
@@ -36,12 +36,4 @@ public class ForceCrystalBlock extends MageCrystalBlock implements BlockEntityPr
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         return world.isClient ? null : checkType(type, BlockEntities.FORCE_CRYSTAL_BLOCK_ENTITY, ForceCrystalBlockEntity::tick);
     }
-
-    @Nullable
-    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(
-            BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker
-    ) {
-        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-    }
-
 }

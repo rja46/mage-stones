@@ -38,11 +38,6 @@ public class ColdCrystalBlock extends MageCrystalBlock implements BlockEntityPro
         return world.isClient ? null : checkType(type, BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, ColdCrystalBlockEntity::tick);
     }
 
-    @Nullable
-    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(
-            BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker
-    ) {
-        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
-    }
+
 
 }

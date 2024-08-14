@@ -19,10 +19,15 @@ public class BlockEntities {
                             ModBlocks.COLD_MAGE_STONE_CRYSTAL)
                     .build(null);
 
-    public static final BlockEntityType<ColdCrystalBlockEntity> FORCE_CRYSTAL_BLOCK_ENTITY
+    public static final BlockEntityType<ForceCrystalBlockEntity> FORCE_CRYSTAL_BLOCK_ENTITY
             = BlockEntityType.Builder.create(
-                    ColdCrystalBlockEntity::new, // Corrected here
-                    ModBlocks.COLD_MAGE_STONE_CRYSTAL)
+                    ForceCrystalBlockEntity::new, // Corrected here
+                    ModBlocks.FORCE_MAGE_STONE_CRYSTAL)
+            .build(null);
+    public static final BlockEntityType<MageCrystalBlockEntity> MAGE_CRYSTAL_BLOCK_ENTITY
+            = BlockEntityType.Builder.create(
+                    MageCrystalBlockEntity::new, // Corrected here
+                    ModBlocks.CHARGED_MAGE_STONE_CRYSTAL)
             .build(null);
 
     public static void initialize() {
@@ -39,6 +44,10 @@ public class BlockEntities {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MageStones.MOD_ID, "force_crystal_block_entity"),FORCE_CRYSTAL_BLOCK_ENTITY
+        );
+        Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MageStones.MOD_ID, "mage_crystal_block_entity"),MAGE_CRYSTAL_BLOCK_ENTITY
         );
     }
 }
