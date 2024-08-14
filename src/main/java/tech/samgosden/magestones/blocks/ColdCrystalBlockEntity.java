@@ -2,13 +2,12 @@ package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import tech.samgosden.magestones.util.util;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
 
 import java.util.HashSet;
@@ -24,13 +23,8 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
         if (!world.isClient) {
             if (ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
-                int radiusSquared = radius * radius;
-                LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(
-                                pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius,
-                                pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), Entity::isAlive)
-                        .stream()
-                        .filter(entity -> entity.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) <= radiusSquared)
-                        .toArray(LivingEntity[]::new);
+                int radiusSquared = radius*radius;
+                LivingEntity[] entities = util.getEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                     entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
                 }

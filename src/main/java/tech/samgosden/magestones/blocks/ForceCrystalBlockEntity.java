@@ -1,17 +1,13 @@
 package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.util.util;
 
-public class ForceCrystalBlockEntity extends BlockEntity {
-    private static int ticksLeft;
-    private int effectRadius = 5;
+public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
     public ForceCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.FORCE_CRYSTAL_BLOCK_ENTITY, pos, state);
         ticksLeft = 100;
@@ -22,18 +18,11 @@ public class ForceCrystalBlockEntity extends BlockEntity {
         if (!world.isClient) {
             if (ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
-                int radiusSquared = radius * radius;
-                LivingEntity[] entities = world.getEntitiesByClass(LivingEntity.class, new Box(
-                                pos.getX() - radius, pos.getY() - radius, pos.getZ() - radius,
-                                pos.getX() + radius, pos.getY() + radius, pos.getZ() + radius), Entity::isAlive)
-                        .stream()
-                        .filter(entity -> entity.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) <= radiusSquared)
-                        .toArray(LivingEntity[]::new);
+                LivingEntity[] entities = util.getEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
-                        Entity player = entity;
-                        Vec3d pushDirection = player.getPos().subtract(Vec3d.ofCenter(pos)).normalize().multiply(1.5);
-                        player.addVelocity(pushDirection.x, pushDirection.y, pushDirection.z);
-                        player.velocityModified = true;
+                        Vec3d pushDirection = entity.getPos().subtract(Vec3d.ofCenter(pos)).normalize().multiply(1.5);
+                        entity.addVelocity(pushDirection.x, pushDirection.y, pushDirection.z);
+                        entity.velocityModified = true;
                 }
 
 
