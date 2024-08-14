@@ -2,7 +2,7 @@ package tech.samgosden.magestones;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
-import tech.samgosden.magestones.blocks.BlockEntites;
+import tech.samgosden.magestones.blocks.BlockEntities;
 import tech.samgosden.magestones.blocks.ModBlocks;
 import tech.samgosden.magestones.item.MageStonesItemGroup;
 import tech.samgosden.magestones.item.ModItems;
@@ -18,11 +18,11 @@ public class MageStones implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        LOGGER.info("[Mage_Stones] Initialized! This mod adds... nothing?");
+        LOGGER.info("Initialized! This mod adds... nothing?");
         ModItems.initialize();
         MageStonesItemGroup.initialize();
         ModBlocks.initialize();
-        BlockEntites.initialize();
+        BlockEntities.initialize();
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             ItemTagger itemTagger = new ItemTagger();
             itemTagger.tagIronRelatedItems(server, server.getRegistryManager());

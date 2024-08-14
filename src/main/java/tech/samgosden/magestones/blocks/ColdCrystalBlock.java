@@ -11,6 +11,7 @@ import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class ColdCrystalBlock extends MageCrystalBlock implements BlockEntityProvider {
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
@@ -20,12 +21,6 @@ public class ColdCrystalBlock extends MageCrystalBlock implements BlockEntityPro
     }
 
 
-
-    @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new ColdCrystalBlockEntity(pos, state);
-    }
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
@@ -33,11 +28,21 @@ public class ColdCrystalBlock extends MageCrystalBlock implements BlockEntityPro
     }
 
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient ? null:checkType(type, BlockEntites.COLD_CRYSTAL_BLOCK_ENTITY, ColdCrystalBlockEntity::tick);
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new ColdCrystalBlockEntity(pos, state);
     }
 
-    private static <T extends BlockEntity> BlockEntityTicker<T> checkType(BlockEntityType<T> givenType, BlockEntityType<? extends BlockEntity> expectedType, BlockEntityTicker<? super T> ticker) {
-        return givenType == expectedType ? (BlockEntityTicker<T>) ticker : null;
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return world.isClient ? null : checkType(type, BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, ColdCrystalBlockEntity::tick);
     }
+
+    @Nullable
+    protected static <E extends BlockEntity, A extends BlockEntity> BlockEntityTicker<A> checkType(
+            BlockEntityType<A> givenType, BlockEntityType<E> expectedType, BlockEntityTicker<? super E> ticker
+    ) {
+        return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
+    }
+
 }

@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 public class LightCrystalBlockEntity extends BlockEntity {
     private static int ticksLeft;
     public LightCrystalBlockEntity(BlockPos pos, BlockState state) {
-        super(BlockEntites.LIGHT_CRYSTAL_BLOCK_ENTITY, pos, state);
+        super(BlockEntities.LIGHT_CRYSTAL_BLOCK_ENTITY, pos, state);
         ticksLeft = 100;
     }
 
