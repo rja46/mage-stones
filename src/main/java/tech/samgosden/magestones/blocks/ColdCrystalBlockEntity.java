@@ -1,10 +1,10 @@
 package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.nbt.NbtCompound;
@@ -35,8 +35,22 @@ public class ColdCrystalBlockEntity extends BlockEntity {
                     pos.getX() - blockEntity.effectRadius, pos.getY() - blockEntity.effectRadius, pos.getZ() - blockEntity.effectRadius), Entity::isAlive).toArray(new LivingEntity[0]);
             for (LivingEntity entity : entities) {
                 Vec3d slowVector = new Vec3d(0, 0, 0); // Adjust the values as needed
-                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1));
+                entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
             }
+
+
+            for (int x = -blockEntity.effectRadius; x <= blockEntity.effectRadius; x++) {
+                for (int y = -blockEntity.effectRadius; y <= blockEntity.effectRadius; y++) {
+                    for (int z = -blockEntity.effectRadius; z <= blockEntity.effectRadius; z++) {
+                        BlockPos currentPos = pos.add(x, y, z);
+                        BlockState blockState = world.getBlockState(currentPos);
+                        if (blockState.isOf(Blocks.WATER)) {
+                            world.setBlockState(currentPos, Blocks.ICE.getDefaultState());
+                        }
+                    }
+                }
+            }
+
         }
     }
 
