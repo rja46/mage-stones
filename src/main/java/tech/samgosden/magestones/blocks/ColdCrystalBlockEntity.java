@@ -4,7 +4,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
@@ -33,4 +33,17 @@ public class ColdCrystalBlockEntity extends BlockEntity {
                 }
             }
         }
+    @Override
+    public void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("EffectRadius", effectRadius); // Save custom data
+        nbt.putInt("TicksLeft", ticksLeft); // Save custom data
     }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        effectRadius = nbt.getInt("EffectRadius"); // Load custom data
+        ticksLeft = nbt.getInt("TicksLeft"); // Load custom data
+    }
+}

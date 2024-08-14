@@ -13,16 +13,16 @@ import tech.samgosden.magestones.util.ItemTagger;
 public class MageStones implements ModInitializer {
     public static String MOD_ID = "mage_stones";
     public static String MOD_NAME = "Mage Stones";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
 
     @Override
     public void onInitialize() {
         LOGGER.info("[Mage_Stones] Initialized! This mod adds... nothing?");
-        BlockEntites.initialize();
         ModItems.initialize();
         MageStonesItemGroup.initialize();
         ModBlocks.initialize();
+        BlockEntites.initialize();
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             ItemTagger itemTagger = new ItemTagger();
             itemTagger.tagIronRelatedItems(server, server.getRegistryManager());
