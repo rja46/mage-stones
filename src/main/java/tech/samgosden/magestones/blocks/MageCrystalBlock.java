@@ -26,6 +26,7 @@ import org.jetbrains.annotations.Nullable;
 public class MageCrystalBlock extends Block implements Waterloggable, BlockEntityProvider {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.FACING;
+    public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
     protected final VoxelShape northShape;
     protected final VoxelShape southShape;
     protected final VoxelShape eastShape;
@@ -35,7 +36,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
 
     public MageCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP));
+        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE));
         this.upShape = Block.createCuboidShape(xzOffset, 0.0, xzOffset, 16 - xzOffset, height, 16 - xzOffset);
         this.downShape = Block.createCuboidShape(xzOffset, 16 - height, xzOffset, 16 - xzOffset, 16.0, 16 - xzOffset);
         this.northShape = Block.createCuboidShape(xzOffset, xzOffset, 16 - height, 16 - xzOffset, 16 - xzOffset, 16.0);
@@ -102,7 +103,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, FACING);
+        builder.add(WATERLOGGED, FACING, ISACTIVE);
     }
 
     @Override

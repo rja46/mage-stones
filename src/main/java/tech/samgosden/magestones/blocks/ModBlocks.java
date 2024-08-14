@@ -19,18 +19,14 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, id, block);
     }
 
-    public static final Block CHARGED_MAGE_STONE_CRYSTAL = register(
+    public static final Block MAGE_STONE_CRYSTAL = register(
             new MageCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
             "charged_mage_stone_crystal",
             false);
 
-    public static final Block DULL_MAGE_STONE_CRYSTAL = register(
-            new MageCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
-            "dull_mage_stone_crystal",
-            false);
 
     public static final Block LIGHT_MAGE_STONE_CRYSTAL = register(
-            new LightCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque().luminance(state -> state.get(LightCrystalBlock.ISACTIVE) ? 15:0)),
+            new LightCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque().luminance(state -> state.get(MageCrystalBlock.ISACTIVE) ? 15:0)),
             "light_mage_stone_crystal",
             false);
 

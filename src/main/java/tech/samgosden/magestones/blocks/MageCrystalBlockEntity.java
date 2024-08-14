@@ -6,6 +6,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import tech.samgosden.magestones.util.ConfigHandler;
 
 public class MageCrystalBlockEntity extends BlockEntity {
     protected int ticksLeft;
@@ -13,11 +14,19 @@ public class MageCrystalBlockEntity extends BlockEntity {
 
     public MageCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        ticksLeft = 100;
+        ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
     }
 
 
-    public static void tick(World world, BlockPos pos, BlockState state, BlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, MageCrystalBlockEntity blockEntity) {
+        if (!world.isClient) {
+            if (blockEntity.ticksLeft > 0) {
+                blockEntity.ticksLeft -= 1;
+            }
+            if (blockEntity.ticksLeft == 0) {
+                world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
+            }
+        }
     }
 
     @Override

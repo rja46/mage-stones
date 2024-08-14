@@ -5,7 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import tech.samgosden.magestones.util.util;
+import tech.samgosden.magestones.util.Util;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -16,7 +16,6 @@ import java.util.Set;
 public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
     public ColdCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, pos, state);
-        ticksLeft = 100;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {
@@ -24,7 +23,7 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
             if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
                 int radiusSquared = radius*radius;
-                LivingEntity[] entities = util.getEntitiesInRange(radius, world, pos);
+                LivingEntity[] entities = Util.getEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                     entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
                 }

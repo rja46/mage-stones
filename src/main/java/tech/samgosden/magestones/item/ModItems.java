@@ -8,6 +8,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import tech.samgosden.magestones.MageStones;
 import tech.samgosden.magestones.blocks.ModBlocks;
+import tech.samgosden.magestones.util.ConfigHandler;
 
 public class ModItems {
 
@@ -22,24 +23,37 @@ public class ModItems {
         return registeredItem;
     }
 
-    public static final Item DULL_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings(), ModBlocks.DULL_MAGE_STONE_CRYSTAL),
-            "dull_mage_stone");
 
-    public static final Item CHARGED_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.CHARGED_MAGE_STONE_CRYSTAL),
-            "charged_mage_stone");
+    public static final Item MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.MAGE_STONE_CRYSTAL),
+            "mage_stone");
 
     public static final Item LIGHT_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.LIGHT_MAGE_STONE_CRYSTAL),
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.LIGHT_MAGE_STONE_CRYSTAL),
             "light_mage_stone");
 
     public static final Item COLD_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.COLD_MAGE_STONE_CRYSTAL),
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.COLD_MAGE_STONE_CRYSTAL),
             "cold_mage_stone");
 
     public static final Item FORCE_MAGE_STONE = register(
-            new MageCrystalItem(new FabricItemSettings().rarity(Rarity.EPIC), ModBlocks.FORCE_MAGE_STONE_CRYSTAL),
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.FORCE_MAGE_STONE_CRYSTAL),
             "force_mage_stone");
 
 

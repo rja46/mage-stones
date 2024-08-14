@@ -11,11 +11,10 @@ import tech.samgosden.magestones.blocks.ModBlocks;
 
 public final class MageStonesItemGroup {
     public static final ItemGroup MAGE_STONES = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(ModItems.CHARGED_MAGE_STONE))
+            .icon(() -> new ItemStack(ModItems.MAGE_STONE))
             .displayName(Text.translatable("itemGroup.magestones.magestones"))
             .entries(((displayContext, entries) -> {
-                entries.add(ModItems.CHARGED_MAGE_STONE);
-                entries.add(ModItems.DULL_MAGE_STONE);
+                entries.add(ModItems.MAGE_STONE);
                 entries.add(ModItems.LIGHT_MAGE_STONE);
                 entries.add(ModItems.COLD_MAGE_STONE);
                 entries.add(ModItems.FORCE_MAGE_STONE);

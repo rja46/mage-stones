@@ -8,6 +8,7 @@ import tech.samgosden.magestones.item.MageStonesItemGroup;
 import tech.samgosden.magestones.item.ModItems;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tech.samgosden.magestones.util.ConfigHandler;
 import tech.samgosden.magestones.util.ItemTagger;
 
 public class MageStones implements ModInitializer {
@@ -19,6 +20,7 @@ public class MageStones implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Initialized! This mod adds... nothing?");
+        ConfigHandler.initialize();
         ModItems.initialize();
         MageStonesItemGroup.initialize();
         ModBlocks.initialize();
