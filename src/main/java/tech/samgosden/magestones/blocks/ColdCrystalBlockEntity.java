@@ -24,7 +24,7 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
             if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
                 int radiusSquared = radius*radius;
-                LivingEntity[] entities = Util.getEntitiesInRange(radius, world, pos);
+                LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                     entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
                 }

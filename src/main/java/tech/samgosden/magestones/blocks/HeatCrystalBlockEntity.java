@@ -18,28 +18,16 @@ public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
             if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
                 int radiusSquared = radius * radius;
-                LivingEntity[] entities = Util.getEntitiesInRange(radius, world, pos);
+                LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                      entity.setOnFire(true);
                      entity.damage(world.getDamageSources().inFire(), 2.0F);
                 }
 
-//                Set<BlockPos> waterPositions = new HashSet<>();
-//
-//                for (int x = -radius; x <= radius; x++) {
-//                    for (int y = -radius; y <= radius; y++) {
-//                        for (int z = -radius; z <= radius; z++) {
-//                            if (x * x + y * y + z * z <= radiusSquared) {
-//                                BlockPos currentPos = pos.add(x, y, z);
-//                                BlockState blockState = world.getBlockState(currentPos);
-//                                if (blockState.isOf(Blocks.WATER)) {
-//                                    waterPositions.add(currentPos);
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//                waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
+                ItemEntity[] items = Util.getDroppedItemEntitiesInRange(radiusSquared, world, pos);
+
+
+
                 blockEntity.ticksLeft -= 1;
             }
             if (blockEntity.ticksLeft == 0) {

@@ -17,7 +17,7 @@ public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
-                LivingEntity[] entities = Util.getEntitiesInRange(radius, world, pos);
+                LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                         Vec3d pushDirection = entity.getPos().subtract(Vec3d.ofCenter(pos)).normalize().multiply(1.5);
                         entity.addVelocity(pushDirection.x, pushDirection.y, pushDirection.z);
