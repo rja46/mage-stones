@@ -13,23 +13,40 @@ import net.minecraft.world.World;
 import tech.samgosden.magestones.util.ConfigHandler;
 
 public class MageCrystalBlockEntity extends BlockEntity {
-    protected int ticksLeft;
+    protected int ticksLeft = -1;
     protected int effectRadius = 5;
     protected Item drop;
 
     public MageCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, Item drop) {
         super(type, pos, state);
-        ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
+        if(ticksLeft == -1)
+        {
+            ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
+        }
+        if (ticksLeft <= 0) {
+            if (world != null) {
+                world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
+            }
+        }
         this.drop = drop;
     }
 
+    public void setTicksLeft(int ticksLeft) {
+        if (ticksLeft <= 0) {
+            if (world != null) {
+                BlockState state = world.getBlockState(pos);
+                world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
+            }
+        }
+        this.ticksLeft = ticksLeft;
+    }
 
     public static void tick(World world, BlockPos pos, BlockState state, MageCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
                 blockEntity.ticksLeft -= 1;
             }
-            if (blockEntity.ticksLeft == 0) {
+            if (blockEntity.ticksLeft == 1) {
                 world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
             }
             //set the ticks left on the block
