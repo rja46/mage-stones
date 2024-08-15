@@ -37,6 +37,12 @@ public class BlockEntities {
                     ModBlocks.HEAT_MAGE_STONE_CRYSTAL)
             .build(null);
 
+    public static final BlockEntityType<GhoulCrystalBlockEntity> GHOUL_CRYSTAL_BLOCK_ENTITY
+            = BlockEntityType.Builder.create(
+                    GhoulCrystalBlockEntity::new, // Corrected here
+                    ModBlocks.GHOUL_MAGE_STONE_CRYSTAL)
+            .build(null);
+
     public static void initialize() {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
@@ -61,6 +67,11 @@ public class BlockEntities {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MageStones.MOD_ID, "heat_crystal_block_entity"),HEAT_CRYSTAL_BLOCK_ENTITY
+        );
+
+        Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MageStones.MOD_ID, "ghoul_crystal_block_entity"),GHOUL_CRYSTAL_BLOCK_ENTITY
         );
     }
 }

@@ -24,7 +24,6 @@ public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
                 int radius = blockEntity.effectRadius;
-                int radiusSquared = radius * radius;
                 LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
                 for (LivingEntity entity : entities) {
                      entity.setOnFire(true);
@@ -43,8 +42,6 @@ public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
                         itemStack.setCount(item.getStack().getCount());
                         world.spawnEntity(new ItemEntity(world, item.getX(), item.getY(), item.getZ(), itemStack ));
                         item.kill();
-                    } else {
-                        System.out.println("The item cannot be smelted.");
                     }
                 }
 

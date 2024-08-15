@@ -30,6 +30,7 @@ public class MageStones implements ModInitializer {
         MageStonesItemGroup.initialize();
         ModBlocks.initialize();
         BlockEntities.initialize();
+        MobDeathListener.register();
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             ItemTagger itemTagger = new ItemTagger();
             itemTagger.tagIronRelatedItems(server, server.getRegistryManager());

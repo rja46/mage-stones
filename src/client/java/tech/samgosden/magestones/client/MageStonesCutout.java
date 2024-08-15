@@ -15,5 +15,6 @@ public class MageStonesCutout {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FORCE_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GRAVITY_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.HEAT_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GHOUL_MAGE_STONE_CRYSTAL, RenderLayer.getCutout());
     }
 }

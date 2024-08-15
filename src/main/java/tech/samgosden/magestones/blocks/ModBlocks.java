@@ -50,6 +50,11 @@ public class ModBlocks {
             "heat_mage_stone_crystal",
             false);
 
+    public static final Block GHOUL_MAGE_STONE_CRYSTAL = register(
+            new GhoulCrystalBlock(7, 3, AbstractBlock.Settings.create().nonOpaque()),
+            "ghoul_mage_stone_crystal",
+            false);
+
     public  static final Block CHARGER_BLOCK = register(
             new ChargerBlock(AbstractBlock.Settings.create().nonOpaque()),
             "charger_block",

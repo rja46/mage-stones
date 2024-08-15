@@ -5,6 +5,7 @@
     "mage_stones:cold_mage_stone_crystal",
     "mage_stones:force_mage_stone_crystal",
     "mage_stones:heat_mage_stone_crystal",
-    "mage_stones:gravity_mage_stone_crystal"
+    "mage_stones:gravity_mage_stone_crystal",
+    "mage_stones:ghoul_mage_stone_crystal"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "mage_stones:block/ghoul_mage_stone_crystal_off"
+  }
+}

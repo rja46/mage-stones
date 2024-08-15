@@ -20,6 +20,7 @@ public final class MageStonesItemGroup {
                 entries.add(ModItems.FORCE_MAGE_STONE);
                 entries.add(ModItems.GRAVITY_MAGE_STONE);
                 entries.add(ModItems.HEAT_MAGE_STONE);
+                entries.add(ModItems.GHOUL_MAGE_STONE);
 
                 entries.add(ModBlocks.CHARGER_BLOCK);
             })).build();

@@ -72,6 +72,14 @@ public class ModItems {
                     ModBlocks.HEAT_MAGE_STONE_CRYSTAL),
             "heat_mage_stone");
 
+    public static final Item GHOUL_MAGE_STONE = register(
+            new MageCrystalItem(new FabricItemSettings()
+                    .rarity(Rarity.EPIC)
+                    .maxDamage(ConfigHandler.config
+                            .getInt("magestones.DefaultCrystalTicksLeft")),
+                    ModBlocks.GHOUL_MAGE_STONE_CRYSTAL),
+            "ghoul_mage_stone");
+
 
     public static void initialize(){
     }
