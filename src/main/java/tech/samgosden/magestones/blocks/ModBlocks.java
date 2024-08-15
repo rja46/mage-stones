@@ -60,6 +60,11 @@ public class ModBlocks {
             "charger_block",
             true);
 
+    public  static final Block TRANSMITTER_BLOCK = register(
+            new TransmitterBlock(AbstractBlock.Settings.create().nonOpaque()),
+            "transmitter_block",
+            true);
+
     public static void initialize(){
     }
 }

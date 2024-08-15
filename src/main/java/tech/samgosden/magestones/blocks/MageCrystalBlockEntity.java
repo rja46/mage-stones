@@ -14,7 +14,9 @@ import tech.samgosden.magestones.util.ConfigHandler;
 
 public class MageCrystalBlockEntity extends BlockEntity {
     protected int ticksLeft = -1;
-    protected int effectRadius = 5;
+    protected int defaultRadius = 5;
+    protected int effectRadius = defaultRadius;
+    protected int increasedRadius = defaultRadius * 2;
     protected Item drop;
 
     public MageCrystalBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state, Item drop) {
@@ -86,5 +88,13 @@ public class MageCrystalBlockEntity extends BlockEntity {
     }
     public void resetTimeLeft(){
         ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
+    }
+
+    public void increaseRadius(){
+        effectRadius = increasedRadius;
+    }
+
+    public void resetRadius(){
+        effectRadius = defaultRadius;
     }
 }
