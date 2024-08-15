@@ -4,10 +4,13 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -15,12 +18,14 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 import tech.samgosden.magestones.item.ModItems;
+import tech.samgosden.magestones.util.ConfigHandler;
 
 public class MageCrystalBlock extends Block implements Waterloggable, BlockEntityProvider {
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
@@ -32,6 +37,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
     protected final VoxelShape westShape;
     protected final VoxelShape upShape;
     protected final VoxelShape downShape;
+    public int ticksLeft;
 
     public MageCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(settings);
@@ -42,6 +48,19 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
         this.southShape = Block.createCuboidShape(xzOffset, xzOffset, 0.0, 16 - xzOffset, 16 - xzOffset, height);
         this.eastShape = Block.createCuboidShape(0.0, xzOffset, xzOffset, height, 16 - xzOffset, 16 - xzOffset);
         this.westShape = Block.createCuboidShape(16 - height, xzOffset, xzOffset, 16.0, 16 - xzOffset, 16 - xzOffset);
+        this.ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
+    }
+
+    @Override
+    public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
+        super.onBreak(world, pos, state, player);
+        if(!world.isClient()&&this.ticksLeft > 0&&this.ticksLeft < ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft")) {
+            ItemStack item = new ItemStack(asItem());
+            NbtCompound nbt = new NbtCompound();
+            nbt.putInt("durability", this.ticksLeft);
+            item.setNbt(nbt);
+            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), item);
+        }
     }
 
     @Override
