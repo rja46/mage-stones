@@ -4,9 +4,11 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.PiglinEntity;
 import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.entity.mob.StrayEntity;
 import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeKeys;
@@ -45,22 +47,30 @@ public class GhoulCrystalBlockEntity extends MageCrystalBlockEntity {
             if (!(entity.isUndead()) && world != null) {
                 Random random = new Random();
                 Entity undead;
-                if (random.nextBoolean()) {
-                    if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.DESERT)) {
-                        undead = new ZombieEntity(EntityType.HUSK, entity.getEntityWorld());
+                if (entity instanceof VillagerEntity) {
+                    undead = new ZombieEntity(EntityType.ZOMBIE_VILLAGER, entity.getEntityWorld());
+                }
+                else if (entity instanceof PiglinEntity) {
+                    undead = new ZombieEntity(EntityType.ZOMBIFIED_PIGLIN, entity.getEntityWorld());
+                }
+                else {
+                    if (random.nextBoolean()) {
+                        if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.DESERT)) {
+                            undead = new ZombieEntity(EntityType.HUSK, entity.getEntityWorld());
+                        } else {
+                            undead = new ZombieEntity(EntityType.ZOMBIE, entity.getEntityWorld());
+                        }
                     } else {
-                        undead = new ZombieEntity(EntityType.ZOMBIE, entity.getEntityWorld());
-                    }
-                } else {
-                    if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.SNOWY_PLAINS)) {
-                        undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld()) {
-                        };
-                    } else if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.ICE_SPIKES)) {
-                        undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld());
-                    } else if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.FROZEN_RIVER)) {
-                        undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld());
-                    } else {
-                        undead = new SkeletonEntity(EntityType.SKELETON, entity.getEntityWorld());
+                        if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.SNOWY_PLAINS)) {
+                            undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld()) {
+                            };
+                        } else if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.ICE_SPIKES)) {
+                            undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld());
+                        } else if (world.getBiome(entity.getBlockPos()).matchesKey(BiomeKeys.FROZEN_RIVER)) {
+                            undead = new StrayEntity(EntityType.STRAY, entity.getEntityWorld());
+                        } else {
+                            undead = new SkeletonEntity(EntityType.SKELETON, entity.getEntityWorld());
+                        }
                     }
                 }
 
