@@ -9,7 +9,6 @@ import net.minecraft.recipe.Recipe;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
-import tech.samgosden.magestones.MageStones;
 
 import java.util.HashSet;
 import java.util.List;
@@ -29,18 +28,27 @@ public class ItemTagger {
      * @param registryManager  The DynamicRegistryManager instance that manages the game's registries.
      */
     public void tagIronRelatedItems(MinecraftServer server, DynamicRegistryManager registryManager) {
-        Set<Recipe<?>> visitedRecipes = new HashSet<>();
-        recipeManager = server.getRecipeManager();
-        ironRelatedItems.add(Registries.ITEM.get(new Identifier("minecraft", "iron_ingot")));
+        if (!ConfigHandler.config.hasPath("magestones.IronRelatedItems")) {
+            Set<Recipe<?>> visitedRecipes = new HashSet<>();
+            recipeManager = server.getRecipeManager();
+            ironRelatedItems.add(Registries.ITEM.get(new Identifier("minecraft", "iron_ingot")));
 
-        for (Recipe<?> recipe : recipeManager.values()) {
-            if (!visitedRecipes.contains(recipe)) {
-                traverseRecipe(recipe, visitedRecipes, registryManager);
+            for (Recipe<?> recipe : recipeManager.values()) {
+                if (!visitedRecipes.contains(recipe)) {
+                    traverseRecipe(recipe, visitedRecipes, registryManager);
+                }
+            }
+
+            // Add the iron-related items to the tag
+            addItemsToTag(ironRelatedItems);
+        }
+        else{
+            List<String> items = ConfigHandler.config.getStringList("magestones.IronRelatedItems");
+            for (String item : items)
+            {
+                System.out.println(item);
             }
         }
-
-        // Add the iron-related items to the tag
-        addItemsToTag(ironRelatedItems);
     }
 
     private void traverseRecipe(Recipe<?> recipe, Set<Recipe<?>> visitedRecipes, DynamicRegistryManager registryManager) {
@@ -104,7 +112,7 @@ public class ItemTagger {
     private void addItemsToTag(Set<Item> items) {
         //print the name of all the items
         for (Item item : items) {
-
+            System.out.println(item.getName());
         }
     }
 }
