@@ -44,7 +44,6 @@ public class MageCrystalItem extends BlockItem {
                 return ActionResult.FAIL;
             } else {
                 BlockState blockState = this.getPlacementState(itemPlacementContext);
-                System.out.println("The First");
                 if (blockState == null) {
                     return ActionResult.FAIL;
                 } else if (!this.place(itemPlacementContext, blockState)) {
@@ -56,7 +55,6 @@ public class MageCrystalItem extends BlockItem {
                     ItemStack itemStack = itemPlacementContext.getStack();
                     BlockState blockState2 = world.getBlockState(blockPos);
                     if (blockState2.isOf(blockState.getBlock())) {
-                        System.out.println("The second");
                         blockState2 = this.placeFromNbt(blockPos, world, itemStack, blockState2);
                         this.postPlacement(blockPos, world, playerEntity, itemStack, blockState2);
                         blockState2.getBlock().onPlaced(world, blockPos, blockState2, playerEntity, itemStack);
