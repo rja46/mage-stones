@@ -56,7 +56,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
         super.onBreak(world, pos, state, player);
         int ticksLeft = world.getBlockState(pos).get(TICKSLEFT);
         if(!world.isClient()&&ticksLeft > 0&&ticksLeft < ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft")) {
-            ItemStack item = new ItemStack(asItem());
+            ItemStack item = new ItemStack(state.getBlock().asItem());
             NbtCompound nbt = new NbtCompound();
             nbt.putInt("durability", ticksLeft);
             item.setNbt(nbt);
