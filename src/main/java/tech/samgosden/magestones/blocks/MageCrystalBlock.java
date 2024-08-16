@@ -51,6 +51,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
         this.westShape = Block.createCuboidShape(16 - height, xzOffset, xzOffset, 16.0, 16 - xzOffset, 16 - xzOffset);
     }
 
+
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBreak(world, pos, state, player);

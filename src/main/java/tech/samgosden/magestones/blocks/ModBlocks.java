@@ -65,6 +65,11 @@ public class ModBlocks {
             "transmitter_block",
             true);
 
+    public  static final Block CRYSTAL_CONNECTOR = register(
+            new CrystalConnector(AbstractBlock.Settings.create().nonOpaque()),
+            "crystal_connector",
+            true);
+
     public static void initialize(){
     }
 }

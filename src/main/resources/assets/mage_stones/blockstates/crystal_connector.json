@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "mage_stones:block/crystal_connector" },
+    "facing=east": { "model": "mage_stones:block/crystal_connector", "y": 90 },
+    "facing=south": { "model": "mage_stones:block/crystal_connector", "y": 180 },
+    "facing=west": { "model": "mage_stones:block/crystal_connector", "y": 270 }
+  }
+}

@@ -43,6 +43,12 @@ public class BlockEntities {
                     ModBlocks.GHOUL_MAGE_STONE_CRYSTAL)
             .build(null);
 
+    public static final BlockEntityType<CrystalConnectorEntity> CRYSTAL_CONNECTOR_ENTITY
+            = BlockEntityType.Builder.create(
+                    CrystalConnectorEntity::new, // Corrected here
+                    ModBlocks.CRYSTAL_CONNECTOR)
+            .build(null);
+
     public static void initialize() {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
@@ -72,6 +78,11 @@ public class BlockEntities {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MageStones.MOD_ID, "ghoul_crystal_block_entity"),GHOUL_CRYSTAL_BLOCK_ENTITY
+        );
+
+        Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MageStones.MOD_ID, "crystal_connector_entity"),CRYSTAL_CONNECTOR_ENTITY
         );
     }
 }

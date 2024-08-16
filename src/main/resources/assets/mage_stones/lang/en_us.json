@@ -7,5 +7,6 @@
   "block.mage_stones.heat_mage_stone_crystal": "Heat Mage Stone",
   "block.mage_stones.ghoul_mage_stone_crystal": "Ghoul Mage Stone",
   "itemGroup.magestones.magestones": "Mage Stones",
-  "block.mage_stones.charger_block": "Charger"
+  "block.mage_stones.charger_block": "Charger",
+  "block.mage_stones.crystal_connector": "Connector"
 }

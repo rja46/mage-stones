@@ -23,6 +23,9 @@ public final class MageStonesItemGroup {
                 entries.add(ModItems.GHOUL_MAGE_STONE);
 
                 entries.add(ModBlocks.CHARGER_BLOCK);
+                entries.add(ModBlocks.TRANSMITTER_BLOCK);
+                entries.add(ModBlocks.CRYSTAL_CONNECTOR);
+
             })).build();
 
     public static void initialize() {

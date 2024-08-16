@@ -12,11 +12,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
     public ColdCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.COLD_MAGE_STONE);
+    }
+
+    @Override
+    public boolean isReceivingEnergy(){
+        List<BlockPos> adjacentBlocks = getAdjacentBlocks(world, pos);
+        for (BlockPos adjacentBlock : adjacentBlocks) {
+            if (world.getBlockState(adjacentBlock).getBlock() == Blocks.ICE) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {

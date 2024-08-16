@@ -9,6 +9,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import tech.samgosden.magestones.util.ConfigHandler;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MageCrystalBlockEntity extends BlockEntity {
     protected int ticksLeft = -1;
     protected int defaultRadius = 5;
@@ -77,5 +80,21 @@ public class MageCrystalBlockEntity extends BlockEntity {
 
     public void resetRadius(){
         effectRadius = defaultRadius;
+    }
+
+
+    public boolean isReceivingEnergy(){
+        return false;
+    }
+
+    protected List<BlockPos> getAdjacentBlocks(World world, BlockPos pos) {
+        List<BlockPos> adjacentBlocks = new ArrayList<>();
+        adjacentBlocks.add(pos.up());
+        adjacentBlocks.add(pos.down());
+        adjacentBlocks.add(pos.north());
+        adjacentBlocks.add(pos.south());
+        adjacentBlocks.add(pos.west());
+        adjacentBlocks.add(pos.east());
+        return adjacentBlocks;
     }
 }
