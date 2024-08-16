@@ -14,6 +14,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.BlockMirror;
@@ -31,33 +32,33 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
     public static final BooleanProperty ISACTIVE = BooleanProperty.of("isactive");
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final DirectionProperty FACING = Properties.FACING;
+    public static final IntProperty TICKSLEFT = IntProperty.of("ticksleft", 0 , ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft"));
     protected final VoxelShape northShape;
     protected final VoxelShape southShape;
     protected final VoxelShape eastShape;
     protected final VoxelShape westShape;
     protected final VoxelShape upShape;
     protected final VoxelShape downShape;
-    public int ticksLeft;
 
     public MageCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(settings);
-        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE));
+        this.setDefaultState(this.getDefaultState().with(WATERLOGGED, Boolean.FALSE).with(FACING, Direction.UP).with(ISACTIVE, Boolean.TRUE).with(TICKSLEFT, ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft")));
         this.upShape = Block.createCuboidShape(xzOffset, 0.0, xzOffset, 16 - xzOffset, height, 16 - xzOffset);
         this.downShape = Block.createCuboidShape(xzOffset, 16 - height, xzOffset, 16 - xzOffset, 16.0, 16 - xzOffset);
         this.northShape = Block.createCuboidShape(xzOffset, xzOffset, 16 - height, 16 - xzOffset, 16 - xzOffset, 16.0);
         this.southShape = Block.createCuboidShape(xzOffset, xzOffset, 0.0, 16 - xzOffset, 16 - xzOffset, height);
         this.eastShape = Block.createCuboidShape(0.0, xzOffset, xzOffset, height, 16 - xzOffset, 16 - xzOffset);
         this.westShape = Block.createCuboidShape(16 - height, xzOffset, xzOffset, 16.0, 16 - xzOffset, 16 - xzOffset);
-        this.ticksLeft = ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft");
     }
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBreak(world, pos, state, player);
-        if(!world.isClient()&&this.ticksLeft > 0&&this.ticksLeft < ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft")) {
+        int ticksLeft = world.getBlockState(pos).get(TICKSLEFT);
+        if(!world.isClient()&&ticksLeft > 0&&ticksLeft < ConfigHandler.config.getInt("magestones.DefaultCrystalTicksLeft")) {
             ItemStack item = new ItemStack(asItem());
             NbtCompound nbt = new NbtCompound();
-            nbt.putInt("durability", this.ticksLeft);
+            nbt.putInt("durability", ticksLeft);
             item.setNbt(nbt);
             ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), item);
         }
@@ -126,7 +127,7 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(WATERLOGGED, FACING, ISACTIVE);
+        builder.add(WATERLOGGED, FACING, ISACTIVE, TICKSLEFT);
     }
 
     @Override

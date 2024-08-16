@@ -15,7 +15,6 @@ import net.minecraft.world.biome.BiomeKeys;
 import tech.samgosden.magestones.item.ModItems;
 import tech.samgosden.magestones.util.Util;
 
-import java.util.Optional;
 import java.util.Random;
 
 public class GhoulCrystalBlockEntity extends MageCrystalBlockEntity {
@@ -38,7 +37,9 @@ public class GhoulCrystalBlockEntity extends MageCrystalBlockEntity {
             if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(GhoulCrystalBlock.ISACTIVE, false));
             }
+            world.setBlockState(pos, state.with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
         }
+
     }
 
     public void onMobDeath(LivingEntity entity) {

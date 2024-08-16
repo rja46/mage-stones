@@ -28,6 +28,8 @@ public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
             if (blockEntity.ticksLeft == 0) {
                 world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
             }
+            world.setBlockState(pos, state.with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
+
         }
 
     }

@@ -1,6 +1,5 @@
 package tech.samgosden.magestones.blocks;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.Item;
 import net.minecraft.block.entity.BlockEntity;
@@ -49,14 +48,9 @@ public class MageCrystalBlockEntity extends BlockEntity {
             if (blockEntity.ticksLeft == 1) {
                 world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
             }
-            //set the ticks left on the block
-            Block block = world.getBlockState(pos).getBlock();
-            if (block instanceof MageCrystalBlock crystalBlock) {
-                crystalBlock.ticksLeft = blockEntity.ticksLeft;
-            }
+            world.setBlockState(pos, state.with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
         }
     }
-
     @Override
     public void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
