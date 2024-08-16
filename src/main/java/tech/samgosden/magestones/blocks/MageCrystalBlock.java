@@ -157,4 +157,18 @@ public class MageCrystalBlock extends Block implements Waterloggable, BlockEntit
         return expectedType == givenType ? (BlockEntityTicker<A>) ticker : null;
     }
 
+
+    @Override
+    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+        if (world.getBlockEntity(pos) instanceof MageCrystalBlockEntity) {
+            if (((MageCrystalBlockEntity) world.getBlockEntity(pos)).notDisabledByConnector == false) {
+                if (!(world.getBlockEntity(pos.north()) instanceof CrystalConnectorEntity) &&
+                !(world.getBlockEntity(pos.south()) instanceof CrystalConnectorEntity) &&
+                        !(world.getBlockEntity(pos.east()) instanceof CrystalConnectorEntity) &&
+                        !(world.getBlockEntity(pos.west()) instanceof CrystalConnectorEntity)){
+                    ((MageCrystalBlockEntity) world.getBlockEntity(pos)).notDisabledByConnector = true;
+                }
+            }
+        }
+    }
 }

@@ -60,6 +60,7 @@ public class CrystalConnectorEntity extends BlockEntity {
                         }
                     }
                     if (crystalToPower != null) {
+                        crystalBlock.notDisabledByConnector = false;
                         if (crystalBlock.ticksLeft > 0) {
                             crystalToPower.increaseRadius();
                             if (crystalToPower.ticksLeft == 0) {
@@ -70,6 +71,7 @@ public class CrystalConnectorEntity extends BlockEntity {
                             crystalToPower.ticksLeft++;
                         }
                     }
+                    else {crystalBlock.notDisabledByConnector = true;}
                 }
             }
         }

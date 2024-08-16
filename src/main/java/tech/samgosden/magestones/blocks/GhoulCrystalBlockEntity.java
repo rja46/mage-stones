@@ -37,11 +37,13 @@ public class GhoulCrystalBlockEntity extends MageCrystalBlockEntity {
     public static void tick(World world, BlockPos pos, BlockState state, GhoulCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
-                int radius = blockEntity.effectRadius;
-                LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
-                for (LivingEntity entity : entities) {
-                    if (!entity.isUndead()){
-                    entity.damage(world.getDamageSources().magic(), 1.0F);
+                if (blockEntity.notDisabledByConnector) {
+                    int radius = blockEntity.effectRadius;
+                    LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
+                    for (LivingEntity entity : entities) {
+                        if (!entity.isUndead()) {
+                            entity.damage(world.getDamageSources().magic(), 1.0F);
+                        }
                     }
                 }
                 blockEntity.ticksLeft -= 1;

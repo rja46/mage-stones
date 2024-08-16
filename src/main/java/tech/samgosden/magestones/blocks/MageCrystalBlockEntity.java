@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MageCrystalBlockEntity extends BlockEntity {
+    public boolean notDisabledByConnector = true;
     protected int ticksLeft = -1;
     protected int defaultRadius = 5;
     protected int effectRadius = defaultRadius;

@@ -34,29 +34,31 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
     public static void tick(World world, BlockPos pos, BlockState state, ColdCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {
-                int radius = blockEntity.effectRadius;
-                int radiusSquared = radius*radius;
-                LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
-                for (LivingEntity entity : entities) {
-                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
-                }
+                if (blockEntity.notDisabledByConnector) {
+                    int radius = blockEntity.effectRadius;
+                    int radiusSquared = radius * radius;
+                    LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
+                    for (LivingEntity entity : entities) {
+                        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
+                    }
 
-                Set<BlockPos> waterPositions = new HashSet<>();
+                    Set<BlockPos> waterPositions = new HashSet<>();
 
-                for (int x = -radius; x <= radius; x++) {
-                    for (int y = -radius; y <= radius; y++) {
-                        for (int z = -radius; z <= radius; z++) {
-                            if (x * x + y * y + z * z <= radiusSquared) {
-                                BlockPos currentPos = pos.add(x, y, z);
-                                BlockState blockState = world.getBlockState(currentPos);
-                                if (blockState.isOf(Blocks.WATER)) {
-                                    waterPositions.add(currentPos);
+                    for (int x = -radius; x <= radius; x++) {
+                        for (int y = -radius; y <= radius; y++) {
+                            for (int z = -radius; z <= radius; z++) {
+                                if (x * x + y * y + z * z <= radiusSquared) {
+                                    BlockPos currentPos = pos.add(x, y, z);
+                                    BlockState blockState = world.getBlockState(currentPos);
+                                    if (blockState.isOf(Blocks.WATER)) {
+                                        waterPositions.add(currentPos);
+                                    }
                                 }
                             }
                         }
                     }
+                    waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
                 }
-                waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
                 blockEntity.ticksLeft -= 1;
             }
             if (blockEntity.ticksLeft == 0) {
