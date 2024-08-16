@@ -116,15 +116,16 @@ public class MageCrystalItem extends BlockItem {
         return property.parse(name).map(value -> state.with(property, value)).orElse(state);
     }
     public static boolean writeNbtToBlockEntity(World world, @Nullable PlayerEntity player, BlockPos pos, ItemStack stack) {
-
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity != null) {
             NbtCompound nbt = stack.getNbt();
             if (blockEntity instanceof MageCrystalBlockEntity mageCrystalBlockEntity && nbt != null) {
-                int durability = nbt.getInt("durability");
-                mageCrystalBlockEntity.setTicksLeft(durability);
-                if(durability == 0){
-                    world.setBlockState(pos, world.getBlockState(pos).with(MageCrystalBlock.ISACTIVE, false));
+                if (nbt.contains("durability")) {
+                    int durability = nbt.getInt("durability");
+                    mageCrystalBlockEntity.setTicksLeft(durability);
+                    if (durability == 0) {
+                        world.setBlockState(pos, world.getBlockState(pos).with(MageCrystalBlock.ISACTIVE, false));
+                    }
                 }
             }
             MinecraftServer minecraftServer = world.getServer();
