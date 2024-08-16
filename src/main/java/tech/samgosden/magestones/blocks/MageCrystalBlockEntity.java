@@ -45,10 +45,12 @@ public class MageCrystalBlockEntity extends BlockEntity {
             if (blockEntity.ticksLeft > 0) {
                 blockEntity.ticksLeft -= 1;
             }
-            if (blockEntity.ticksLeft == 1) {
-                world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false));
+            if (blockEntity.ticksLeft == 0) {
+                world.setBlockState(pos, state.with(MageCrystalBlock.ISACTIVE, false).with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
             }
-            world.setBlockState(pos, state.with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
+            else {
+                world.setBlockState(pos, state.with(MageCrystalBlock.TICKSLEFT, blockEntity.ticksLeft));
+            }
         }
     }
     @Override
