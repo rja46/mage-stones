@@ -22,6 +22,18 @@ public class GhoulCrystalBlockEntity extends MageCrystalBlockEntity {
         super(BlockEntities.GHOUL_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.GHOUL_MAGE_STONE);
     }
 
+    @Override
+    public boolean isReceivingEnergy(){
+        int radius = this.effectRadius;
+        LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, this.world, this.pos);
+        for (LivingEntity entity : entities) {
+            if (entity.isUndead()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void tick(World world, BlockPos pos, BlockState state, GhoulCrystalBlockEntity blockEntity) {
         if (!world.isClient) {
             if (blockEntity.ticksLeft > 0) {

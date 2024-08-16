@@ -1,6 +1,7 @@
 package tech.samgosden.magestones.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.inventory.SimpleInventory;
@@ -13,11 +14,24 @@ import net.minecraft.world.World;
 import tech.samgosden.magestones.item.ModItems;
 import tech.samgosden.magestones.util.Util;
 
+import java.util.List;
 import java.util.Optional;
 
 public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
     public HeatCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.HEAT_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.HEAT_MAGE_STONE);
+    }
+
+    @Override
+    public boolean isReceivingEnergy(){
+        List<BlockPos> adjacentBlocks = getAdjacentBlocks(world, pos);
+        for (BlockPos adjacentBlock : adjacentBlocks) {
+            if (world.getBlockState(adjacentBlock).getBlock() == Blocks.LAVA
+                    || world.getBlockState(adjacentBlock).getBlock() == Blocks.MAGMA_BLOCK){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, HeatCrystalBlockEntity blockEntity) {

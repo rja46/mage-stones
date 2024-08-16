@@ -8,4 +8,9 @@ public class LightCrystalBlockEntity extends MageCrystalBlockEntity {
     public LightCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.LIGHT_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.LIGHT_MAGE_STONE);
     }
+
+    @Override
+    public boolean isReceivingEnergy(){
+        return world.getLightLevel(this.getPos()) == 15;
+    }
 }

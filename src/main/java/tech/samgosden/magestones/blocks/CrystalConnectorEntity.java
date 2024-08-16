@@ -63,7 +63,6 @@ public class CrystalConnectorEntity extends BlockEntity {
                         if (crystalBlock.ticksLeft > 0) {
                             crystalToPower.increaseRadius();
                             if (crystalToPower.ticksLeft == 0) {
-                                //I'm not sure why this doesn't update visually
                                 crystalToPower.ticksLeft = 1;
                                 world.setBlockState(crystalToPower.getPos(), world.getBlockState(crystalToPower.getPos()).with(MageCrystalBlock.ISACTIVE, true));
 
