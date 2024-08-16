@@ -5,15 +5,20 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.Item;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import tech.samgosden.magestones.item.ModItems;
 
 public class ColdCrystalBlock extends MageCrystalBlock implements BlockEntityProvider {
     public ColdCrystalBlock(int height, int xzOffset, AbstractBlock.Settings settings) {
         super(height, xzOffset, settings);
     }
 
+    @Override
+    public Item asItem(){return ModItems.COLD_MAGE_STONE;
+    }
 
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

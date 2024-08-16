@@ -4,16 +4,22 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import tech.samgosden.magestones.item.ModItems;
 
 public class GravityCrystalBlock extends MageCrystalBlock {
     public GravityCrystalBlock(int height, int xzOffset, Settings settings) {
         super(height, xzOffset, settings);
     }
 
+    @Override
+    public Item asItem(){
+        return ModItems.GRAVITY_MAGE_STONE;
+    }
 
 
     @Override
