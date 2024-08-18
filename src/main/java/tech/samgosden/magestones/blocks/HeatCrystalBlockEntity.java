@@ -15,9 +15,7 @@ import tech.samgosden.magestones.MageStones;
 import tech.samgosden.magestones.item.ModItems;
 import tech.samgosden.magestones.util.Util;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
     public HeatCrystalBlockEntity(BlockPos pos, BlockState state) {
@@ -68,8 +66,8 @@ public class HeatCrystalBlockEntity extends MageCrystalBlockEntity {
                     }
 
                     if (blockEntity.intensity >= 2) {
-                        List<BlockPos> waterPositions = new ArrayList<>();
-                        List<BlockPos> nonAirBlocks = new ArrayList<>();
+                        Set<BlockPos> waterPositions = new HashSet<>();
+                        Set<BlockPos> nonAirBlocks = new HashSet<>();
                         for (int x = -radius; x <= radius; x++) {
                             for (int y = -radius; y <= radius; y++) {
                                 for (int z = -radius; z <= radius; z++) {
