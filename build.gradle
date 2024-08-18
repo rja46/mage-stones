@@ -10,6 +10,7 @@ base {
     archivesName = project.archives_base_name
 }
 
+
 loom {
     splitEnvironmentSourceSets()
 
@@ -20,6 +21,7 @@ loom {
         }
     }
 }
+
 
 repositories {
     // Add repositories to retrieve artifacts from in here.
@@ -40,7 +42,7 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     modImplementation "net.fabricmc.fabric-api:fabric-rendering-v1:${project.fabric_version}"
-    implementation 'com.typesafe:config:1.4.1'
+    include implementation('com.typesafe:config:1.4.1')
 }
 
 processResources {
