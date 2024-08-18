@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "mage_stones:light_mage_stone_crystal",
+    "mage_stones:cold_mage_stone_crystal",
+    "mage_stones:force_mage_stone_crystal",
+    "mage_stones:heat_mage_stone_crystal",
+    "mage_stones:gravity_mage_stone_crystal",
+    "mage_stones:ghoul_mage_stone_crystal",
+
+    "mage_stones:charger_block",
+    "mage_stones:crystal_connector",
+    "mage_stones:transmitter_block"
+  ]
+}

@@ -18,6 +18,7 @@ import java.util.Set;
 public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
     public ColdCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.COLD_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.COLD_MAGE_STONE);
+        intensity = 1;
     }
 
     @Override
@@ -37,12 +38,10 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
                 if (blockEntity.notDisabledByConnector) {
                     int radius = blockEntity.effectRadius;
                     int radiusSquared = radius * radius;
-                    LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
-                    for (LivingEntity entity : entities) {
-                        entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
-                    }
+
 
                     Set<BlockPos> waterPositions = new HashSet<>();
+                    Set<BlockPos> surfaceBlocks = new HashSet<>();
 
                     for (int x = -radius; x <= radius; x++) {
                         for (int y = -radius; y <= radius; y++) {
@@ -53,11 +52,36 @@ public class ColdCrystalBlockEntity extends MageCrystalBlockEntity {
                                     if (blockState.isOf(Blocks.WATER)) {
                                         waterPositions.add(currentPos);
                                     }
+                                    //These conditions may need updating, as problems occur when played on an illegal block,
+                                    //which this code may not prevent.
+                                    else if (!blockState.isTransparent(world, currentPos)
+                                            && world.getBlockState(currentPos).getBlock() != Blocks.AIR
+                                            && world.getBlockState(currentPos).getBlock() != Blocks.SNOW
+                                            && world.getBlockState(currentPos.up()).getBlock() == Blocks.AIR
+                                            && world.getBlockState(currentPos.up()).getBlock() != Blocks.ICE) {
+                                        surfaceBlocks.add(currentPos.up());
+                                        System.out.println("surface block: " + currentPos);
+                                    }
+                                    System.out.println(world.getBlockState(currentPos).getBlock());
+
                                 }
                             }
                         }
                     }
-                    waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
+
+                    if  (blockEntity.intensity >= 0) {
+                        LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
+                        for (LivingEntity entity : entities) {
+                            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 20));
+                        }
+                        //surfaceBlocks.forEach(currentPos -> {world.setBlockState(currentPos, Blocks.SNOW.getDefaultState());});
+                    }
+                    if (blockEntity.intensity >= 1) {
+                        waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.ICE.getDefaultState()));
+                    }
+                    if (blockEntity.intensity >= 2) {
+                        waterPositions.forEach(currentPos -> world.setBlockState(currentPos, Blocks.BLUE_ICE.getDefaultState()));
+                    }
                 }
                 blockEntity.ticksLeft -= 1;
             }

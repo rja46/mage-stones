@@ -20,6 +20,7 @@ public class MageStones implements ModInitializer {
     public static String MOD_NAME = "Mage Stones";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
     public static final TagKey<Block> CHARGEABLE_CRYSTALS = TagKey.of(RegistryKeys.BLOCK, new Identifier("mage_stones", "chargeable_crystals"));
+    public static final TagKey<Block> NOT_AFFECTED_BY_CRYSTALS = TagKey.of(RegistryKeys.BLOCK, new Identifier("mage_stones", "not_affected_by_crystals"));
 
 
     @Override
