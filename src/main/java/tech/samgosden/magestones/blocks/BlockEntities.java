@@ -49,6 +49,13 @@ public class BlockEntities {
                     ModBlocks.CRYSTAL_CONNECTOR)
             .build(null);
 
+    public static final BlockEntityType<ChargeMeterEntity> CHARGE_METER_ENTITY
+            = BlockEntityType.Builder.create(
+                    ChargeMeterEntity::new, // Corrected here
+                    ModBlocks.CHARGE_METER)
+            .build(null);
+
+
     public static void initialize() {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
@@ -83,6 +90,11 @@ public class BlockEntities {
         Registry.register(
                 Registries.BLOCK_ENTITY_TYPE,
                 Identifier.of(MageStones.MOD_ID, "crystal_connector_entity"),CRYSTAL_CONNECTOR_ENTITY
+        );
+
+        Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                Identifier.of(MageStones.MOD_ID, "charge_meter_entity"),CHARGE_METER_ENTITY
         );
     }
 }

@@ -70,6 +70,11 @@ public class ModBlocks {
             "crystal_connector",
             true);
 
+    public  static final Block CHARGE_METER = register(
+            new ChargeMeter(AbstractBlock.Settings.create().nonOpaque()),
+            "charge_meter",
+            true);
+
     public static void initialize(){
     }
 }
