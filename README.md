@@ -1,1 +1,1 @@
-# Mage Stones
+# MageS tones
