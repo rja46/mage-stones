@@ -10,6 +10,9 @@
 
     "mage_stones:charger_block",
     "mage_stones:crystal_connector",
-    "mage_stones:transmitter_block"
+    "mage_stones:transmitter_block",
+    "mage_stones:charge_meter",
+
+    "minecraft:bedrock"
   ]
 }

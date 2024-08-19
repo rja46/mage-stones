@@ -25,6 +25,7 @@ public final class MageStonesItemGroup {
                 entries.add(ModBlocks.CHARGER_BLOCK);
                 entries.add(ModBlocks.TRANSMITTER_BLOCK);
                 entries.add(ModBlocks.CRYSTAL_CONNECTOR);
+                entries.add(ModBlocks.CHARGE_METER);
 
             })).build();
 
