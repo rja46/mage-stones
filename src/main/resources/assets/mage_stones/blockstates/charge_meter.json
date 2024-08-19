@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "charge_level=0,facing=north": { "model": "mage_stones:block/charge_meter", "y": 0},
+    "charge_level=0,facing=east": { "model": "mage_stones:block/charge_meter", "y": 90},
+    "charge_level=0,facing=south": { "model": "mage_stones:block/charge_meter", "y": 180},
+    "charge_level=0,facing=west": { "model": "mage_stones:block/charge_meter", "y": 270},
+
+    "charge_level=1,facing=north": { "model": "mage_stones:block/charge_meter_1", "y": 0},
+    "charge_level=1,facing=east": { "model": "mage_stones:block/charge_meter_1", "y": 90},
+    "charge_level=1,facing=south": { "model": "mage_stones:block/charge_meter_1", "y": 180},
+    "charge_level=1,facing=west": { "model": "mage_stones:block/charge_meter_1", "y": 270},
+
+    "charge_level=2,facing=north": { "model": "mage_stones:block/charge_meter_2", "y": 0},
+    "charge_level=2,facing=east": { "model": "mage_stones:block/charge_meter_2", "y": 90},
+    "charge_level=2,facing=south": { "model": "mage_stones:block/charge_meter_2", "y": 180},
+    "charge_level=2,facing=west": { "model": "mage_stones:block/charge_meter_2", "y": 270},
+
+    "charge_level=3,facing=north": { "model": "mage_stones:block/charge_meter_3", "y": 0},
+    "charge_level=3,facing=east": { "model": "mage_stones:block/charge_meter_3", "y": 90},
+    "charge_level=3,facing=south": { "model": "mage_stones:block/charge_meter_3", "y": 180},
+    "charge_level=3,facing=west": { "model": "mage_stones:block/charge_meter_3", "y": 270},
+
+    "charge_level=4,facing=north": { "model": "mage_stones:block/charge_meter_4", "y": 0},
+    "charge_level=4,facing=east": { "model": "mage_stones:block/charge_meter_4", "y": 90},
+    "charge_level=4,facing=south": { "model": "mage_stones:block/charge_meter_4", "y": 180},
+    "charge_level=4,facing=west": { "model": "mage_stones:block/charge_meter_4", "y": 270}
+  }
+}
