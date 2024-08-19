@@ -11,6 +11,15 @@ import tech.samgosden.magestones.util.Util;
 public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
     public ForceCrystalBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.FORCE_CRYSTAL_BLOCK_ENTITY, pos, state, ModItems.FORCE_MAGE_STONE);
+        intensity = 1;
+    }
+
+    public float getPointIntensity(float distance) {
+        float pointIntensity = 0;
+        if (distance > 0.001){
+            pointIntensity = intensity/distance/distance;
+        }
+        return pointIntensity;
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, ForceCrystalBlockEntity blockEntity) {
@@ -20,8 +29,9 @@ public class ForceCrystalBlockEntity extends MageCrystalBlockEntity {
                     int radius = blockEntity.effectRadius;
                     LivingEntity[] entities = Util.getLivingEntitiesInRange(radius, world, pos);
                     for (LivingEntity entity : entities) {
-                        Vec3d pushDirection = entity.getPos().subtract(Vec3d.ofCenter(pos)).normalize().multiply(1.5);
-                        entity.addVelocity(pushDirection.x, pushDirection.y, pushDirection.z);
+                        Vec3d relativeVector = entity.getPos().subtract(Vec3d.ofCenter(pos));
+                        Vec3d pushForce = relativeVector.normalize().multiply(blockEntity.getPointIntensity((float)relativeVector.length()));
+                        entity.addVelocity(pushForce.x, pushForce.y, pushForce.z);
                         entity.velocityModified = true;
                     }
                 }
